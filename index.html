@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 Family Christmas Markets Guide | Munich • Nuremberg • Prague • Vienna</title>
+  <meta name="description" content="Complete 2026 Family Christmas Market Companion Guide for Munich, Nuremberg, Prague, and Vienna (Dec 20–31, 2026) with interactive Google Maps, walking directions, cash calculator, and daily itinerary." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Top Critical Cutoff Alert Bar -->
+  <div class="urgent-bar">
+    🚨 <strong>3 Critical 2026 Market Cutoffs:</strong> Munich Residenz Village closes <strong>Tue Dec 22</strong> • Prague Gas Lamplighter ends <strong>Wed Dec 23 (4:05 PM)</strong> • 3 Downtown Vienna Markets close <strong>Sat Dec 26</strong>!
+    <a href="#alerts-section">See Game Plan ↓</a>
+  </div>
+
+  <!-- Sticky Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-icon">🎄</span>
+        <div>
+          Christmas Markets 2026
+          <span class="brand-subtitle">Munich • Nuremberg • Prague • Vienna</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#alerts-section">⚠️ Closing Alerts</a></li>
+        <li><a href="#maps-section">🗺️ Maps & Directions</a></li>
+        <li><a href="#itinerary-section">📅 Daily Itinerary</a></li>
+        <li><a href="#cities-section">🏰 City Guides</a></li>
+        <li><a href="#cash-section">💶 Cash & Currency (4 Adults)</a></li>
+        <li><a href="#checklist-section">🥨 Food Bingo</a></li>
+        <li><a href="#tips-section">💡 Insider Tips</a></li>
+        <li><a href="https://trips.foratravel.com/i/bitacora-viajera-mx/awr9pzR1tG" target="_blank" rel="noopener" class="btn-fora">✈️ Fora Travel Portal ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">❄️ Family Holiday Companion • Dec 20 – Dec 31, 2026 • 4 Adults</div>
+        <h1>Central Europe <span>Christmas Markets</span> Master Guide</h1>
+        <p class="hero-lead">
+          Expertly sequenced for late-December travel across Bavaria, Czechia, and Austria—catching Munich &amp; Nuremberg before Christmas, spending Christmas Eve &amp; Day in fairy-tale Prague, and hitting Vienna's grand Imperial markets.
+        </p>
+        <div class="hero-pills">
+          <div class="hero-pill">🇩🇪 <strong>Munich:</strong> Dec 20 &amp; 22</div>
+          <div class="hero-pill">🥨 <strong>Nuremberg Day Trip:</strong> Mon, Dec 21</div>
+          <div class="hero-pill">🇨🇿 <strong>Prague:</strong> Dec 23–25</div>
+          <div class="hero-pill">🇦🇹 <strong>Vienna:</strong> Dec 26–27</div>
+          <div class="hero-pill">🏴󠁧󠁢󠁳󠁣󠁴󠁿 <strong>Scotland:</strong> Dec 28–31</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#maps-section" class="btn btn-primary">🗺️ Open Interactive Maps &amp; Directions</a>
+          <a href="#itinerary-section" class="btn btn-secondary">📅 View Day-by-Day Plan</a>
+          <a href="https://trips.foratravel.com/i/bitacora-viajera-mx/awr9pzR1tG" target="_blank" rel="noopener" class="btn btn-secondary">🏨 Hotel &amp; Booking Portal ↗</a>
+        </div>
+      </div>
+
+      <!-- Countdown & Hotel Quick Summary -->
+      <div class="hero-card">
+        <h3>
+          <span>⏳ Countdown to Departure</span>
+          <span style="font-size:0.75rem;color:#e7e5e4;font-family:'Inter',sans-serif;">Sun, Dec 20, 2026</span>
+        </h3>
+        <div class="countdown-box">
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-days">--</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-hours">--</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="cd-mins">--</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number">4</span>
+            <span class="countdown-label">Adults</span>
+          </div>
+        </div>
+
+        <ul class="route-mini-list">
+          <li class="route-mini-item">
+            <div>
+              <strong>🏨 Ruby Rosi Hotel Munich</strong>
+              <div style="font-size:0.75rem;color:#d6d3d1;">Across from München Hbf • Walk to Marienplatz</div>
+            </div>
+            <span class="dates">Dec 20–23</span>
+          </li>
+          <li class="route-mini-item">
+            <div>
+              <strong>🚆 Nuremberg Day Trip (ICE Train)</strong>
+              <div style="font-size:0.75rem;color:#d6d3d1;">1h 05m nonstop from München Hbf</div>
+            </div>
+            <span class="dates">Mon Dec 21</span>
+          </li>
+          <li class="route-mini-item">
+            <div>
+              <strong>🏨 Almanac X Alcron Prague</strong>
+              <div style="font-size:0.75rem;color:#d6d3d1;">Štěpánská 40 • Steps from Wenceslas Square</div>
+            </div>
+            <span class="dates">Dec 23–26</span>
+          </li>
+          <li class="route-mini-item">
+            <div>
+              <strong>🏨 Novotel Wien Hauptbahnhof</strong>
+              <div style="font-size:0.75rem;color:#d6d3d1;">Right at Wien Hbf &amp; U1 Metro (6 mins to center)</div>
+            </div>
+            <span class="dates">Dec 26–28</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SECTION 1: CRITICAL 2026 CLOSING ALERTS -->
+    <section id="alerts-section" class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Must-Read Timing Strategy</span>
+        <h2 class="section-title">3 Critical Date-Sensitive Rules for Late December 2026</h2>
+        <p class="section-subtitle">
+          Many German and Austrian Christmas markets shut down between December 22 and December 26. Your itinerary is brilliantly sequenced to catch all four cities—provided you follow these three non-negotiable timing rules:
+        </p>
+      </div>
+
+      <div class="alerts-grid">
+        <!-- Alert 1 -->
+        <div class="alert-card warning">
+          <span class="alert-badge">🇩🇪 Rule #1 • Munich Cutoff</span>
+          <h3>Munich Residenz Village &amp; Sendlinger Tor Close Tuesday, Dec 22</h3>
+          <p>
+            While Munich's flagship <strong>Marienplatz Christkindlmarkt</strong> stays open until 2:00 PM on Dec 24, the cozy royal palace market (<em>Weihnachtsdorf im Kaiserhof der Residenz</em>) and <em>Sendlinger Tor</em> <strong>close for the season on Tuesday, Dec 22 at 9:00 PM</strong>.
+          </p>
+          <ul>
+            <li><strong>Action Plan:</strong> Visit the Residenz courtyard on <strong>Tuesday afternoon, Dec 22</strong>.</li>
+            <li><strong>Bonus Tip:</strong> On the final evening of Dec 22, Residenz stalls sell their collectible mugs outright with no return deposit required!</li>
+            <li><strong>Viktualienmarkt Note:</strong> Closed on Sunday Dec 20—visit on <strong>Tuesday morning, Dec 22</strong>!</li>
+          </ul>
+        </div>
+
+        <!-- Alert 2 -->
+        <div class="alert-card warning">
+          <span class="alert-badge">🇨🇿 Rule #2 • Prague Dec 23 &amp; 24 Cutoffs</span>
+          <h3>Charles Bridge Gas Lamplighter (Dec 23) &amp; Náměstí Míru (Dec 24)</h3>
+          <p>
+            Prague's main squares (Old Town Square &amp; Wenceslas Square) stay open through <strong>January 6, 2027</strong>, making Prague magical on Dec 24–25. However, two beloved local experiences end earlier:
+          </p>
+          <ul>
+            <li><strong>Wed, Dec 23 (4:05 PM – 4:15 PM):</strong> Final day of the season to watch the historic 19th-century uniformed <strong>Gas-Lamp Lighter</strong> walk across Charles Bridge lighting lamps with a long pole!</li>
+            <li><strong>Thu, Dec 24:</strong> Final operating day for the locals' favorite Vinohrady market at <strong>Náměstí Míru</strong> (and Náměstí Republiky). Visit Wed evening Dec 23 or Thu morning Dec 24!</li>
+          </ul>
+        </div>
+
+        <!-- Alert 3 -->
+        <div class="alert-card urgent">
+          <span class="alert-badge">🚨 Rule #3 • Vienna Dec 26 Final-Day Blitz</span>
+          <h3>Saturday, Dec 26 Is the FINAL DAY for 3 Flagship Vienna Markets!</h3>
+          <p>
+            As soon as your train from Prague arrives at Wien Hauptbahnhof on <strong>Saturday, Dec 26</strong>, roll your bags 3 minutes into Novotel and jump on the U1 Metro to <em>Stephansplatz</em>. If you wait until Sunday, Dec 27, these three markets will be closed for the season:
+          </p>
+          <ul>
+            <li><strong>1. Stephansplatz (Cathedral):</strong> Closes permanently Sat Dec 26 at <strong>7:00 PM</strong>.</li>
+            <li><strong>2. Maria-Theresien-Platz (Museums):</strong> Closes permanently Sat Dec 26 at <strong>7:00 PM</strong>.</li>
+            <li><strong>3. Rathausplatz (City Hall 97 Stalls):</strong> Closes permanently Sat Dec 26 at <strong>10:00 PM</strong>.</li>
+            <li><strong>Sunday, Dec 27 Save:</strong> Save <strong>Belvedere Palace</strong> (11 AM–5 PM), <strong>Schönbrunn Palace</strong> (10 AM–7 PM), and <strong>Prater Riesenradplatz</strong> (11 AM–10 PM) for Sunday, Dec 27!</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTERACTIVE MAPS & GOOGLE MAPS DIRECTIONS HUB -->
+    <section id="maps-section" class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Interactive Navigation &amp; Walking Loops</span>
+        <h2 class="section-title">City Maps, Hotel Pins &amp; One-Tap Google Maps Directions</h2>
+        <p class="section-subtitle">
+          Select a city below to view all Christmas markets, your exact hotel base, dashed walking routes, and one-tap links that launch turn-by-turn walking or transit directions directly in the Google Maps app on your phone.
+        </p>
+      </div>
+
+      <div class="map-hub-layout">
+        <!-- Left Sidebar: City Filter & POI List -->
+        <div class="map-sidebar">
+          <div class="city-filter-tabs">
+            <button type="button" class="city-tab-btn active" data-city="all" style="grid-column: span 2;">🌍 All 4 Cities Overview</button>
+            <button type="button" class="city-tab-btn" data-city="munich">🇩🇪 Munich</button>
+            <button type="button" class="city-tab-btn" data-city="nuremberg">🥨 Nuremberg</button>
+            <button type="button" class="city-tab-btn" data-city="prague">🇨🇿 Prague</button>
+            <button type="button" class="city-tab-btn" data-city="vienna">🇦🇹 Vienna</button>
+          </div>
+
+          <div id="poi-list" class="poi-list">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Right Panel: Interactive Map + Google Maps Embed + Multi-Stop Walking Routes -->
+        <div class="map-main-panel">
+          <div class="map-mode-bar">
+            <div style="font-size:0.84rem;font-weight:600;color:var(--forest-dark);">
+              📍 Legend: 🏨 Hotel Base &nbsp;|&nbsp; 🎄 Christmas Market &nbsp;|&nbsp; 🚆 Rail Hub &nbsp;|&nbsp; <span style="color:#9b2226;">--- Walking Loop</span>
+            </div>
+            <div class="map-toggle-group">
+              <button type="button" class="map-toggle-btn active" data-mode="leaflet">🗺️ Interactive Multi-Pin Map</button>
+              <button type="button" class="map-toggle-btn" data-mode="gmap">🌐 Embedded Google Map View</button>
+            </div>
+          </div>
+
+          <!-- Leaflet Multi-Pin Map -->
+          <div id="leaflet-map"></div>
+
+          <!-- Google Maps Embedded Iframe -->
+          <div id="gmap-frame-container">
+            <iframe
+              id="gmap-iframe"
+              title="Google Maps View"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Marienplatz+Christkindlmarkt+Munich&output=embed">
+            </iframe>
+          </div>
+
+          <!-- Multi-Stop Google Maps Walking Loops -->
+          <div class="walking-routes-box">
+            <h4>🚶 One-Tap Multi-Stop Walking &amp; Transit Loops (Opens in Google Maps App)</h4>
+            <div id="walking-routes-list" class="route-buttons-grid">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: DAY-BY-DAY MASTER ITINERARY -->
+    <section id="itinerary-section" class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Day-by-Day Game Plan (Dec 20 – Dec 31, 2026)</span>
+        <h2 class="section-title">Complete Family Trip Itinerary &amp; Walking Sequence</h2>
+        <p class="section-subtitle">
+          Filter by day below to see your exact step-by-step schedule, transit connections, market closing deadlines, and meal recommendations.
+        </p>
+      </div>
+
+      <div class="day-filter-bar">
+        <button type="button" class="day-btn active" data-day="all">All Days (Dec 20–31)</button>
+        <button type="button" class="day-btn" data-day="dec20">Sun Dec 20 • Munich</button>
+        <button type="button" class="day-btn" data-day="dec21">Mon Dec 21 • Nuremberg + Munich</button>
+        <button type="button" class="day-btn" data-day="dec22">Tue Dec 22 • Munich Final Cutoffs</button>
+        <button type="button" class="day-btn" data-day="dec23">Wed Dec 23 • Prague Arrival</button>
+        <button type="button" class="day-btn" data-day="dec24">Thu Dec 24 • Prague Xmas Eve</button>
+        <button type="button" class="day-btn" data-day="dec25">Fri Dec 25 • Prague Xmas Day</button>
+        <button type="button" class="day-btn" data-day="dec26">Sat Dec 26 • Vienna Urgent Rush</button>
+        <button type="button" class="day-btn" data-day="dec27">Sun Dec 27 • Vienna Palaces</button>
+        <button type="button" class="day-btn" data-day="dec28">Dec 28–31 • Scotland</button>
+      </div>
+
+      <div class="itinerary-timeline">
+
+        <!-- DAY 1: SUN DEC 20 -->
+        <article class="day-card" data-day="dec20">
+          <div class="day-card-header">
+            <div class="day-title-group">
+              <span>DAY 1 • SUNDAY, DECEMBER 20, 2026</span>
+              <h3>🇩🇪 Arrival in Munich &amp; Flagship Old Town Markets</h3>
+            </div>
+            <div class="day-hotel-pill">🏨 Ruby Rosi Hotel Munich (Across from München Hbf)</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">Afternoon</div>
+                <div class="step-content">
+                  <h4>Check-In at Ruby Rosi Hotel &amp; Pedestrian Zone Walk</h4>
+                  <p>Drop your bags at <strong>Ruby Rosi Hotel Munich</strong> (Bayerstraße 21, right across from Hauptbahnhof). Walk 15 minutes straight east through the traffic-free <em>Neuhauser Straße</em> and <em>Kaufingerstraße</em> pedestrian boulevard—passing Karlsplatz (Stachus) ice rink and festive wooden huts—into the heart of the Old Town.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">4:00 PM</div>
+                <div class="step-content">
+                  <h4>Kripperlmarkt, Rindermarkt Sternenplatzl &amp; Alter Peter Tower</h4>
+                  <p>Browse Germany's largest Nativity scene market (<em>Kripperlmarkt</em>) by St. Peter's Church. Climb <strong>Alter Peter</strong> before dusk for the iconic aerial view over Marienplatz's red-roofed stalls, then grab your first mug of Glühwein under the glowing star-lit trees at <strong>Rindermarkt Sternenplatzl</strong>.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">5:30 PM Sharp</div>
+                <div class="step-content">
+                  <h4>🎺 Live Rathaus Balcony Advent Concert at Marienplatz (Closes 8:00 PM Sun)</h4>
+                  <p>Stand in the center of <strong>Marienplatz</strong> at 5:30 PM as Alpine brass ensembles and choirs perform live from the illuminated Neo-Gothic Town Hall balcony. Order wood-fired <em>Rahmfleck</em> flatbread, half-meter bratwurst, and roasted <em>Gebrannte Mandeln</em>. <em>Note: On Sundays, Marienplatz stalls close at 8:00 PM (9:00 PM Mon–Sat).</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 2: MON DEC 21 (NUREMBERG DAY TRIP) -->
+        <article class="day-card" data-day="dec21">
+          <div class="day-card-header nuremberg-day">
+            <div class="day-title-group">
+              <span>DAY 2 • MONDAY, DECEMBER 21, 2026</span>
+              <h3>🥨 Full Day Trip to Nuremberg + Evening Return to Munich</h3>
+            </div>
+            <div class="day-hotel-pill">🚆 1h 05m Nonstop ICE Train from München Hbf</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">8:30 – 9:45 AM</div>
+                <div class="step-content">
+                  <h4>High-Speed ICE Train: München Hbf → Nürnberg Hbf</h4>
+                  <p>Walk 2 minutes across the street from Ruby Rosi Hotel into München Hbf. Board a nonstop <strong>Deutsche Bahn ICE train</strong> (1 hour 5 minutes) to arrive in Nuremberg just before 10:00 AM. <em>(Tip: Book a 4-adult Sparpreis group ticket on the DB Navigator app; note that regional Bayern-Tickets only start at 9:00 AM on Mondays and take 1h 45m).</em></p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">10:00 AM</div>
+                <div class="step-content">
+                  <h4>Stop 1: Handwerkerhof Nürnberg (Artisans' Yard)</h4>
+                  <p>Exit Nürnberg Hbf straight through the medieval Frauentor gate into <strong>Handwerkerhof</strong>. Visit here FIRST at 10:00 AM while it's uncrowded and because the boutique tin-foundry, glassblowing, and leather workshops close around 3:30 PM! Optional early sausage plate indoors at rustic <em>Bratwurstglöcklein</em>.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">11:00 AM</div>
+                <div class="step-content">
+                  <h4>Stop 2: Königstraße → St. Lorenz Church → Museumsbrücke Postcard View</h4>
+                  <p>Stroll straight north along <em>Königstraße</em> past the gothic twin spires of St. Lorenz Church and cross the <strong>Museumsbrücke</strong> over the Pegnitz River—pause on the bridge for the famous photo of the half-timbered <em>Heilig-Geist-Spital</em> reflected in the water.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">12:00 PM Sharp</div>
+                <div class="step-content">
+                  <h4>Stop 3: Hauptmarkt (Christkindlesmarkt) &amp; 12:00 Noon Männleinlaufen</h4>
+                  <p>Stand facing the <strong>Frauenkirche</strong> balcony clock at 12:00 noon sharp to watch the 16th-century mechanical figures of the Seven Electors circle Emperor Charles IV. Then explore the 180 red-and-white striped stalls of the <strong>Nürnberger Christkindlesmarkt</strong>! Eat the <strong>Must-Eat Trio</strong>: <em>Drei im Weggla</em> (3 sausages in a roll), flourless <em>Elisenlebkuchen</em> gingerbread, and <em>Heidelbeer-Glühwein</em> (blueberry mulled wine).</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">2:00 PM</div>
+                <div class="step-content">
+                  <h4>Stop 4: Schöner Brunnen Brass Ring &amp; Sister Cities Market (Rathausplatz)</h4>
+                  <p>At the northwest corner of Hauptmarkt, find the <strong>seamless brass ring</strong> on the 14th-century <em>Schöner Brunnen</em> fountain grille and spin it 3 times for good luck. Immediately behind it on Rathausplatz, browse the <strong>Markt der Partnerstädte</strong> (Sister Cities Market—open through Dec 23), featuring Scottish whisky punch from Glasgow, Italian treats from Venice, and crafts from Kraków. Pick up a handmade prune-and-walnut <em>Zwetschgenmännla</em> figure!</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">4:00 – 5:30 PM</div>
+                <div class="step-content">
+                  <h4>Stop 5: Kinderweihnacht (Hans-Sachs-Platz) &amp; World's Largest Feuerzangenbowle</h4>
+                  <p>As dusk falls, walk 2 minutes east to <strong>Hans-Sachs-Platz</strong> to photograph the glowing two-tiered baroque carousel and spot the yellow horse-drawn <em>Postkutsche</em> stagecoach. Before walking back to the train station, stop by the <strong>Fleischbrücke</strong> bridge to drink from the <strong>world's largest Feuerzangenbowle cauldron</strong> (3.4 meters tall!).</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">6:30 – 9:30 PM</div>
+                <div class="step-content">
+                  <h4>ICE Train Back to Munich + Optional Evening at Tollwood Winterfestival</h4>
+                  <p>Ride the 1-hour ICE train back to München Hbf. Since <strong>Tollwood Winterfestival</strong> at Theresienwiese is only a 12-minute walk (or 1 stop on U4/U5) from your hotel and keeps its heated live-music and organic global food tents open until 10:00 PM+, it's the perfect warm-up nightcap!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 3: TUE DEC 22 (MUNICH FULL DAY) -->
+        <article class="day-card" data-day="dec22">
+          <div class="day-card-header">
+            <div class="day-title-group">
+              <span>DAY 3 • TUESDAY, DECEMBER 22, 2026</span>
+              <h3>🇩🇪 Munich Palace Courtyards, Medieval Goblets &amp; Final-Day Cutoffs</h3>
+            </div>
+            <div class="day-hotel-pill">🚨 FINAL DAY for Residenz Village &amp; Sendlinger Tor!</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">10:00 AM</div>
+                <div class="step-content">
+                  <h4>Viktualienmarkt Winterzauber &amp; Marienplatz Morning Stroll</h4>
+                  <p>Because Munich's famous gourmet food market <strong>Viktualienmarkt</strong> was closed on Sunday, visit this morning! Sample artisanal Bavarian cheeses, warm honey wine, and fresh pastries, and admire the Nativity scene inside the beer garden.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">1:30 PM</div>
+                <div class="step-content">
+                  <h4>🚨 PRIORITY: Weihnachtsdorf im Kaiserhof der Residenz (FINAL DAY!)</h4>
+                  <p>Walk 5 minutes north of Marienplatz into the <strong>Munich Residenz Emperor's Courtyard</strong>. <strong>Tuesday, Dec 22 is its final operating day of 2026 (closes at 9:00 PM)!</strong> Sheltered inside four palace walls from the wind, it features an Alpine village chapel, live glassblowers, and fresh <em>Käsespätzle</em> (mountain cheese noodles with crispy onions).</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">4:00 PM</div>
+                <div class="step-content">
+                  <h4>Mittelaltermarkt at Wittelsbacherplatz (Medieval Market)</h4>
+                  <p>Walk 3 minutes across Odeonsplatz to <strong>Wittelsbacherplatz</strong> (open until Dec 23). Lit by iron torches and open braziers, costumed medieval merchants serve hot <em>Drachenblut</em> ("Dragon's Blood" cherry-honey mead in clay goblets), flaming <em>Feuerzangenbowle</em>, and wood-fired <em>Flammkuchen</em>.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">6:30 PM</div>
+                <div class="step-content">
+                  <h4>Isartor Giant Feuerzangenbowle OR Sendlinger Tor (Final Night!)</h4>
+                  <p>Finish your Munich evening at either the historic <strong>Sendlinger Tor Market</strong> (also closing tonight, Dec 22 at 9:30 PM) or the massive steaming cauldron at <strong>Isartor</strong> before packing for tomorrow's trip to Prague.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 4: WED DEC 23 (PRAGUE ARRIVAL) -->
+        <article class="day-card" data-day="dec23">
+          <div class="day-card-header prague-day">
+            <div class="day-title-group">
+              <span>DAY 4 • WEDNESDAY, DECEMBER 23, 2026</span>
+              <h3>🇨🇿 Travel Munich to Prague, Charles Bridge Lamplighter &amp; Vinohrady</h3>
+            </div>
+            <div class="day-hotel-pill">🏨 Almanac X Alcron Prague (Štěpánská 40)</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">Morning / Midday</div>
+                <div class="step-content">
+                  <h4>Coach/Rail Transfer: Munich → Prague &amp; Check-In at Almanac X Alcron</h4>
+                  <p>Arrive at Prague's <em>ÚAN Florenc</em> bus terminal or Main Station. Take Metro Line C (Red) 2 stops to <em>Muzeum</em> or Line B (Yellow) to <em>Můstek</em> and walk 3 minutes to your 5-star Art Deco hotel, <strong>Almanac X Alcron Prague</strong>, half a block off Wenceslas Square.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">4:05 PM Sharp</div>
+                <div class="step-content">
+                  <h4>🚨 FINAL DAY: Historic Charles Bridge Gas-Lamp Lighter!</h4>
+                  <p><strong>Wednesday, Dec 23 is the final day of the year</strong> to witness Prague's historic gas-lamp lighter! Dressed in a 19th-century cape, he starts at the Old Town Bridge Tower (*Křižovnické náměstí*) around <strong>4:05 PM – 4:15 PM</strong> and walks across Charles Bridge lighting the gas lamps by hand with a long brass pole.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">5:30 PM</div>
+                <div class="step-content">
+                  <h4>🚨 Náměstí Míru (Peace Square) Local Market — Closes Tomorrow!</h4>
+                  <p>Head 1 metro stop (or a 12-minute walk uphill from your hotel) to <strong>Náměstí Míru</strong> in front of the neo-Gothic Church of St. Ludmila (open 10:00 AM – 8:00 PM; <strong>closes for the season on Dec 24</strong>). Because this is where Prague locals shop, prices are 25–30% lower than Old Town Square and the beeswax candles, ceramics, and pastries are super authentic.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">7:30 PM</div>
+                <div class="step-content">
+                  <h4>Wenceslas Square Market Right Outside Your Hotel</h4>
+                  <p>Stroll down to <strong>Wenceslas Square</strong> (open until 10:00 PM, food huts until midnight) for smoky Czech <em>Klobása</em> sausages with dark rye bread, hot citrus-spiced <em>Svařák</em>, and warm <em>Medovina</em> honey mead.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 5: THU DEC 24 (PRAGUE CHRISTMAS EVE) -->
+        <article class="day-card" data-day="dec24">
+          <div class="day-card-header prague-day">
+            <div class="day-title-group">
+              <span>DAY 5 • THURSDAY, DECEMBER 24, 2026 (CHRISTMAS EVE / ŠTĚDRÝ DEN)</span>
+              <h3>🇨🇿 Prague Castle, Old Town Square Tree Show &amp; Open-Air Christmas Mass</h3>
+            </div>
+            <div class="day-hotel-pill">✨ Central Markets Open All Day!</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">10:00 AM</div>
+                <div class="step-content">
+                  <h4>Prague Castle Market (St. George's Square) &amp; Downhill Walk</h4>
+                  <p>Take historic <strong>Tram 22</strong> up to <em>Pražský hrad</em> so you don't have to climb the hill. Explore the picturesque <strong>Prague Castle Christmas Market</strong> right behind St. Vitus Cathedral (open 10:00 AM – 4:00 PM on Dec 24). Sip a hot pear punch, overlook the red roofs of Prague, then walk downhill through Lesser Town (<em>Malá Strana</em>) to the cozy <strong>Na Kampě</strong> market right under Charles Bridge.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">2:00 PM</div>
+                <div class="step-content">
+                  <h4>Christmas Eve Transit &amp; Shop Alert</h4>
+                  <p>In Czechia, Christmas Eve (<em>Štědrý den</em>) is the main family holiday: retail shops and supermarkets close between 12:00 PM and 2:00 PM, and trams/metros switch to reduced evening schedules around 4:00 PM–6:00 PM. Staying at Almanac X Alcron means you can walk everywhere on foot!</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">4:30 PM</div>
+                <div class="step-content">
+                  <h4>Old Town Square (*Staroměstské náměstí*) Choreographed Tree Lighting</h4>
+                  <p>Walk 10 minutes north from your hotel to <strong>Old Town Square</strong>. Every hour at <strong>4:30, 5:30, 6:30, 7:30, 8:30, and 9:30 PM</strong>, the towering Christmas tree performs a choreographed light-and-music show in front of the glowing Týn Church spires. Climb the free wooden viewing bridge (or the Old Town Hall Tower before 4:30 PM) for the ultimate family photo! Try crispy garlic <em>Bramboráky</em> (potato pancakes) and charcoal-spit <em>Trdelník</em>.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">9:00 PM</div>
+                <div class="step-content">
+                  <h4>🎶 Live Open-Air Czech Christmas Mass on Old Town Square</h4>
+                  <p>After your Christmas Eve dinner, return to Old Town Square at <strong>9:00 PM</strong> for the magical open-air performance of Jakub Jan Ryba's traditional <em>Czech Christmas Mass (Česká mše vánoční)</em> performed live on the main stage under the stars.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 6: FRI DEC 25 (PRAGUE CHRISTMAS DAY) -->
+        <article class="day-card" data-day="dec25">
+          <div class="day-card-header prague-day">
+            <div class="day-title-group">
+              <span>DAY 6 • FRIDAY, DECEMBER 25, 2026 (CHRISTMAS DAY)</span>
+              <h3>🇨🇿 Festive Christmas Day in Old Town, Havel's Market &amp; Vltava Riverfront</h3>
+            </div>
+            <div class="day-hotel-pill">🎄 Old Town, Wenceslas &amp; Castle Markets Open 10 AM – 10 PM!</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">10:30 AM</div>
+                <div class="step-content">
+                  <h4>Astronomical Clock, Havel's Market &amp; Bohemian Glass Ornaments</h4>
+                  <p>Unlike Germany and Austria where Dec 25 is quiet, Prague's centerpiece markets at <strong>Old Town Square</strong>, <strong>Wenceslas Square</strong>, and <strong>Prague Castle</strong> (10 AM–6 PM) are in full swing! Watch the 1410 <strong>Astronomical Clock</strong> procession of the Twelve Apostles at the top of the hour, and browse hand-blown Bohemian glass ornaments and wooden marionettes.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">2:00 PM</div>
+                <div class="step-content">
+                  <h4>Vltava Riverbank, Jewish Quarter (Josefov) &amp; Langoš Feast</h4>
+                  <p>Stroll through the historic streets of <em>Josefov</em> and along the Vltava embankments for swan views of Charles Bridge. Grab a fresh <em>Langoš</em> (fried flatbread rubbed with garlic, cheese, and sour cream) and hot mulled wine. <em>(Remember: if ordering spit-roasted Prague ham, always specify "150 grams, please" first so they don't pile on a €30 portion by weight!)</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 7: SAT DEC 26 (VIENNA URGENT RUSH) -->
+        <article class="day-card" data-day="dec26">
+          <div class="day-card-header vienna-day">
+            <div class="day-title-group">
+              <span>DAY 7 • SATURDAY, DECEMBER 26, 2026 (ST. STEPHEN'S DAY)</span>
+              <h3>🇦🇹 Train to Vienna &amp; The "Beat-the-Clock" 3-Market Final-Day Blitz!</h3>
+            </div>
+            <div class="day-hotel-pill">🚨 Stephansplatz &amp; Maria-Theresien Close 7 PM • Rathaus Closes 10 PM!</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">Arrival (~Midday/Early PM)</div>
+                <div class="step-content">
+                  <h4>Arrive Wien Hauptbahnhof → 3-Min Bag Drop at Novotel → U1 Metro</h4>
+                  <p>Your direct 4-hour train from Prague pulls straight into <strong>Wien Hauptbahnhof</strong>. Because <strong>Saturday, Dec 26 is the FINAL OPERATING DAY</strong> for Vienna's three flagship downtown markets, walk 3 minutes outside the station exit to drop your bags at <strong>Novotel Wien Hauptbahnhof</strong>, buy a 24h/48h Wiener Linien pass, and hop on the <strong>U1 Metro (Red Line) 3 stops / 6 minutes to Stephansplatz</strong>! <em>(Skip Karlsplatz, Spittelberg, Am Hof, and Freyung—they already closed on Dec 23).</em></p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">Stop 1 (Before 7:00 PM!)</div>
+                <div class="step-content">
+                  <h4>🚨 Stephansplatz Market (Closes Permanently at 7:00 PM Tonight!)</h4>
+                  <p>Emerge from the U1 station directly beneath the towering Gothic spire and diamond-patterned roof of <strong>St. Stephen's Cathedral</strong>. Browse the upscale Austrian artisan huts and sip a hot <em>Orangenpunsch</em>, then walk west down the <strong>Graben</strong> and <strong>Kohlmarkt</strong> beneath Vienna's famous giant glowing crystal chandeliers through the Hofburg Palace courtyards.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">Stop 2 (Before 7:00 PM!)</div>
+                <div class="step-content">
+                  <h4>🚨 Weihnachtsdorf Maria-Theresien-Platz (Closes Permanently at 7:00 PM Tonight!)</h4>
+                  <p>Exit the Hofburg gates onto <strong>Maria-Theresien-Platz</strong>, framed by the illuminated twin imperial domes of the Natural History and Art History Museums. Visit before its <strong>7:00 PM final closing</strong> to try Vienna's creative punch varieties: <em>Apfelstrudel-Punsch</em>, <em>Beerenpunsch</em>, or warm <em>Eierlikör-Punsch</em> topped with whipped cream.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">Stop 3 (Until 10:00 PM!)</div>
+                <div class="step-content">
+                  <h4>🚨 Wiener Christkindlmarkt at Rathausplatz (97 Stalls Close Permanently at 10:00 PM!)</h4>
+                  <p>Walk 6 minutes north along the Ringstraße to Vienna's grandest market in front of the Neo-Gothic <strong>City Hall (Rathaus)</strong>. Tonight at 10:00 PM is the final night for all 97 market stalls! See the famous glowing <strong>Herzerlbaum (Tree of Hearts)</strong>, watch ice skaters wind through the romantic <strong>Wiener Eistraum (Ice Dream)</strong> park trails, and feast on a sizzling cheese-stuffed <em>Käsekrainer</em> sausage, giant Viennese <em>Brezel</em>, pan-fried <em>Bauerngröstl</em>, and paper cones of roasted <em>Maroni</em> (chestnuts).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAY 8: SUN DEC 27 (VIENNA PALACE LOOP) -->
+        <article class="day-card" data-day="dec27">
+          <div class="day-card-header vienna-day">
+            <div class="day-title-group">
+              <span>DAY 8 • SUNDAY, DECEMBER 27, 2026</span>
+              <h3>🇦🇹 Vienna's Imperial Post-Christmas Loop: Belvedere, Schönbrunn &amp; Prater</h3>
+            </div>
+            <div class="day-hotel-pill">👑 All 3 Markets Open Post-Christmas!</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">11:00 AM – 1:30 PM</div>
+                <div class="step-content">
+                  <h4>Stop 1: Belvedere Palace K&amp;K Market (Open 11:00 AM – 5:00 PM on Dec 27)</h4>
+                  <p>Walk less than 10 minutes from your front door at Novotel Wien Hauptbahnhof to the Baroque <strong>Upper Belvedere Palace</strong>! Set behind the reflecting pond, the tranquil K&amp;K Market celebrates Austro-Hungarian heritage. Enjoy fresh caramelized <em>Kaiserschmarren</em> with plum compote (and optionally pop inside Upper Belvedere to see Gustav Klimt's <em>The Kiss</em>). <em>Note holiday closing time of 5:00 PM!</em></p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">2:30 PM – 6:30 PM</div>
+                <div class="step-content">
+                  <h4>Stop 2: Schönbrunn Palace Market &amp; Gloriette Panorama (Open Until 7:00 PM)</h4>
+                  <p>Take the U4 Metro to <strong>Schönbrunn Palace</strong>, where the massive Baroque Court of Honor (<em>Ehrenhof</em>) transitions seamlessly into Vienna's Imperial New Year's Market (open 10:00 AM – 7:00 PM daily through Jan 6). Before dusk (~3:30 PM), walk up the garden hill to the <strong>Gloriette terrace</strong> for a sweeping view over Vienna, then return to the lit palace courtyard for fine Austrian wooden crafts, ice-stock curling (<em>Eisstockschießen</em>), and live brass/jazz music.</p>
+                </div>
+              </div>
+              <div class="step-row">
+                <div class="step-time">7:00 PM – 10:00 PM</div>
+                <div class="step-content">
+                  <h4>Stop 3: Wintermarkt am Riesenradplatz (Prater) &amp; Giant Ferris Wheel</h4>
+                  <p>When Schönbrunn closes at 7:00 PM, ride the U-Bahn to <em>Praterstern</em> for Vienna's liveliest late-night market beneath the illuminated 1897 <strong>Wiener Riesenrad (Giant Ferris Wheel)</strong>! Open until 10:00 PM with free live stage music starting at 7:00 PM, hearty <em>Langos</em> and <em>Kartoffelpuffer</em>, and night rides inside the historic wooden Ferris wheel cabanas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- DAYS 9-12: DEC 28-31 SCOTLAND -->
+        <article class="day-card" data-day="dec28">
+          <div class="day-card-header">
+            <div class="day-title-group">
+              <span>DAYS 9–12 • MONDAY, DEC 28 – THURSDAY, DEC 31, 2026</span>
+              <h3>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Next Leg: Glasgow &amp; Edinburgh Winter Festival / Hogmanay</h3>
+            </div>
+            <div class="day-hotel-pill">💷 British Pound (£ GBP) • Almost 100% Contactless</div>
+          </div>
+          <div class="day-card-body">
+            <div class="schedule-steps">
+              <div class="step-row">
+                <div class="step-time">Dec 28 – 31</div>
+                <div class="step-content">
+                  <h4>Flight from Vienna to Scotland &amp; Edinburgh Winter Festival</h4>
+                  <p>Transition from Vienna to Scotland! While Glasgow's St Enoch Square market closes before Christmas, <strong>Edinburgh's East Princes Street Gardens Christmas Market</strong>, the George Street Ice Rink, and the world-famous <strong>Edinburgh Hogmanay</strong> celebrations (Dec 29 Torchlight Procession, Dec 30 Night Afore Concert, Dec 31 Street Party &amp; Castle Fireworks) run straight through January 4, 2027. Scotland is nearly 100% tap-to-pay (£30–£40 GBP cash is plenty for small tips).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: DETAILED CITY-BY-CITY MARKET GUIDES -->
+    <section id="cities-section" class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Expert Travel Guide Analysis</span>
+        <h2 class="section-title">City-by-City Christmas Markets Deep Dive</h2>
+        <p class="section-subtitle">
+          Detailed hours, signature foods, local traditions, transit hacks, and direct Google Maps links for every market on your route.
+        </p>
+      </div>
+
+      <!-- CITY 1: MUNICH -->
+      <div class="city-section-block" id="city-munich">
+        <div class="city-banner">
+          <div class="city-banner-info">
+            <h3>🇩🇪 Stop 1: Munich, Germany (Sun Dec 20, Mon Dec 21 Eve &amp; Tue Dec 22)</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              <strong>Hotel Base:</strong> Ruby Rosi Hotel Munich by IHG (Bayerstraße 21, right across from München Hauptbahnhof).<br />
+              <strong>Transit Hack for 4 Adults:</strong> Buy an <strong>MVV Group Day Ticket (<em>Gruppen-Tageskarte</em> Zone M, ~€18.60 total for up to 5 adults)</strong> for unlimited U-Bahn, S-Bahn, and tram rides. Marienplatz is just 2 stops (3 minutes) from Hauptbahnhof!
+            </p>
+            <div class="city-meta-pills">
+              <span class="meta-pill">💶 Currency: Euro (€ EUR)</span>
+              <span class="meta-pill">💵 Cash for 4 Adults: €200–€250 EUR</span>
+              <span class="meta-pill">🍺 Mug Pfand: €3.00–€5.00 cash per mug</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="selectCityOnMap('munich')">🗺️ View Munich on Interactive Map</button>
+        </div>
+
+        <div class="markets-grid">
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open Dec 20–24</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Altstadt Center</span>
+              </div>
+              <h4>Münchner Christkindlmarkt (Marienplatz) &amp; Kripperlmarkt</h4>
+              <div class="market-hours">🕒 Mon–Sat 10:00 AM – 9:00 PM | Sun Dec 20: 10:00 AM – 8:00 PM</div>
+              <p class="market-desc">Munich's flagship 14th-century market anchored by a 25-meter Christmas tree with 3,000 lights in front of the Neo-Gothic New Town Hall, flowing directly into the <em>Kripperlmarkt</em> (Nativity market) and <em>Rindermarkt Sternenplatzl</em>.</p>
+              <div class="market-highlights">
+                <div><strong>🎺 Don't Miss:</strong> Live Alpine wind bands &amp; choirs on the Rathaus balcony at <strong>5:30 PM sharp</strong> (Sun–Thu, so both Dec 20 &amp; Dec 22!).</div>
+                <div><strong>🥨 Eat &amp; Drink:</strong> <em>Rahmfleck</em> (warm wood-fired sour cream &amp; bacon flatbread), <em>Schneewittchen</em> (white Glühwein), and roasted candied almonds.</div>
+                <div><strong>📸 Best View:</strong> Climb <em>Alter Peter</em> (St. Peter's Church tower) before 4:15 PM dusk.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('muc-marienplatz')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Marienplatz+Munich&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 Walk Directions (15m)</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-urgent">🚨 Closes Tue Dec 22 at 9 PM!</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Royal Palace Courtyard</span>
+              </div>
+              <h4>Weihnachtsdorf im Kaiserhof der Residenz</h4>
+              <div class="market-hours">🕒 Daily 11:00 AM – 9:00 PM (Final Day: Tuesday, Dec 22, 2026)</div>
+              <p class="market-desc">Sheltered inside the four ornate walls of the former Bavarian royal palace courtyard, this wind-protected Alpine village features a wooden chapel, animated fairytale forest displays, and live glassblowers.</p>
+              <div class="market-highlights">
+                <div><strong>🚨 Final-Day Bonus:</strong> On Tuesday evening, Dec 22, vendors sell their collectible mugs outright without return deposits!</div>
+                <div><strong>🧀 What to Eat:</strong> Fresh <em>Käsespätzle</em> (egg noodles tossed with melted mountain cheese &amp; crispy onions) and half-meter bratwurst.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('muc-residenz')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Marienplatz+Munich&destination=Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 5m from Marienplatz</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open Dec 20–23</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">3m from Residenz</span>
+              </div>
+              <h4>Mittelaltermarkt at Wittelsbacherplatz (Medieval Market)</h4>
+              <div class="market-hours">🕒 Daily 11:00 AM – 9:00 PM (Closes Dec 23)</div>
+              <p class="market-desc">Rough-hewn timber stalls illuminated by iron torches and open fire braziers, where merchants in medieval attire sell horn goblets, beeswax candles, leatherwork, and hand-forged iron crafts.</p>
+              <div class="market-highlights">
+                <div><strong>🍷 Signature Drink:</strong> <em>Drachenblut</em> ("Dragon's Blood" hot spiced cherry-and-honey mead in clay goblets) &amp; flaming <em>Feuerzangenbowle</em>.</div>
+                <div><strong>🍖 Must-Try Food:</strong> Beechwood open-fire meat skewers and crispy wood-fired <em>Flammkuchen</em>.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('muc-medieval')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich&destination=Wittelsbacherplatz+Munich&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 3m from Residenz</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open Dec 20–23 (Late!)</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Near Ruby Rosi Hotel</span>
+              </div>
+              <h4>Tollwood Winterfestival &amp; Isartor Feuerzangenbowle</h4>
+              <div class="market-hours">🕒 Tollwood: Mon–Fri from 2 PM, Sun from 11 AM to ~10:30 PM | Isartor: 11 AM – 10 PM</div>
+              <p class="market-desc"><strong>Tollwood</strong> (on the Theresienwiese Oktoberfest grounds, 12 mins walk from your hotel) features giant heated circus tents with 100% certified organic global street food, artisan bazaars, and free live music. Plus, visit <strong>Isartor</strong> for Munich's giant steaming <em>Feuerzangenbowle</em> cauldron!</p>
+              <div class="market-highlights">
+                <div><strong>💡 Best Timing:</strong> Hit <strong>Tollwood</strong> on <strong>Monday night, Dec 21</strong> after returning from Nuremberg since it stays warm and lively past 10:00 PM right near your hotel!</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('muc-tollwood')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Theresienwiese+Munich&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 12m from Hotel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CITY 2: NUREMBERG -->
+      <div class="city-section-block" id="city-nuremberg">
+        <div class="city-banner" style="border-left-color:var(--crimson-main);">
+          <div class="city-banner-info">
+            <h3>🥨 Stop 2: Nuremberg Day Trip (Monday, December 21, 2026)</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              <strong>Rail Logistics:</strong> Take the <strong>DB ICE High-Speed Train</strong> from München Hbf to Nürnberg Hbf (<strong>1 hour 05 minutes nonstop</strong>, running every 20–30 minutes). Walk straight out of Nürnberg Hbf north along the 12-minute Old Town pedestrian spine—zero subways needed in Nuremberg!
+            </p>
+            <div class="city-meta-pills">
+              <span class="meta-pill">💶 Currency: Euro (€ EUR)</span>
+              <span class="meta-pill">💵 Cash for 4 Adults: €120–€150 EUR</span>
+              <span class="meta-pill">⏰ 12:00 PM Noon: Frauenkirche Clock Show</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="selectCityOnMap('nuremberg')">🗺️ View Nuremberg Walking Spine</button>
+        </div>
+
+        <div class="markets-grid">
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open 10 AM – 9 PM</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Flagship Square</span>
+              </div>
+              <h4>Nürnberger Christkindlesmarkt (Hauptmarkt)</h4>
+              <div class="market-hours">🕒 Daily 10:00 AM – 9:00 PM (Nov 27 – Dec 24, 2026)</div>
+              <p class="market-desc">Famous as "The Little City of Wood and Cloth," over 180 red-and-white striped wooden stalls fill the square before the Gothic <em>Frauenkirche</em>. Strict council laws ban plastic garland and taped pop music to preserve 17th-century Franconian authenticity.</p>
+              <div class="market-highlights">
+                <div><strong>🌭 Must-Eat Trio:</strong> <strong>1) Drei im Weggla</strong> (3 marjoram-spiced sausages in a crusty roll), <strong>2) Original Elisenlebkuchen</strong> (nut-rich flourless gingerbread), <strong>3) Heidelbeer-Glühwein</strong> (blueberry mulled wine).</div>
+                <div><strong>🔔 12:00 Noon Tradition:</strong> Watch the <em>Männleinlaufen</em> mechanical clock parade on the Frauenkirche balcony, then spin the seamless brass ring on the <strong>Schöner Brunnen</strong> fountain 3 times!</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('nue-hauptmarkt')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Hauptmarkt+Nuernberg&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 12m Walk from Hbf</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-closing">Craft Shops 10 AM – 3:30 PM</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Across from Nürnberg Hbf</span>
+              </div>
+              <h4>Handwerkerhof (Artisans' Yard) &amp; Sister Cities Market</h4>
+              <div class="market-hours">🕒 Handwerkerhof: Visit at 10:00 AM! | Sister Cities (Rathausplatz): 10 AM – 9 PM</div>
+              <p class="market-desc">Start your morning at 10:00 AM inside the medieval walled <strong>Handwerkerhof</strong> right opposite the train station (artisan workshops close around 3:30 PM, while taverns like <em>Bratwurstglöcklein</em> stay open late). North of Hauptmarkt on Rathausplatz, explore the <strong>Markt der Partnerstädte</strong> (Sister Cities Market, open until Dec 23) with booths from Glasgow, Venice, and Kraków.</p>
+              <div class="market-highlights">
+                <div><strong>🎁 Best Souvenir:</strong> Buy a handmade <em>Zwetschgenmännla</em> (chimney-sweep or hobby figure crafted from dried prunes, figs, and walnuts).</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('nue-handwerkerhof')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Handwerkerhof+Nuernberg&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 2m from Nürnberg Hbf</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open Until 9:00 PM</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">East &amp; South of Hauptmarkt</span>
+              </div>
+              <h4>Kinderweihnacht (Hans-Sachs-Platz) &amp; World's Largest Feuerzangenbowle</h4>
+              <div class="market-hours">🕒 Daily 10:00 AM – 9:00 PM (Feuerzangenbowle until 9:30 PM)</div>
+              <p class="market-desc">Stroll 2 minutes east of Hauptmarkt to <strong>Hans-Sachs-Platz</strong> for the nostalgic two-tiered vintage baroque carousel and historic yellow horse-drawn mail coach (<em>Postkutsche</em>). Then head to the <strong>Fleischbrücke</strong> bridge over the Pegnitz River to drink from the <strong>World's Largest Feuerzangenbowle Cauldron</strong> (2.5m wide × 3.4m tall)!</p>
+              <div class="market-highlights">
+                <div><strong>🍽️ Sit-Down Warm-Up Tip:</strong> Want an indoor lunch? Visit <em>Bratwurst Röslein</em> (on Rathausplatz) or <em>Bratwursthäusle bei St. Sebald</em> for sausages grilled over beechwood fires.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('nue-feuer')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Fleischbruecke+Nuernberg&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 3m from Hauptmarkt</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CITY 3: PRAGUE -->
+      <div class="city-section-block" id="city-prague">
+        <div class="city-banner" style="border-left-color:#1e293b;">
+          <div class="city-banner-info">
+            <h3>🇨🇿 Stop 3: Prague, Czechia (Wed Dec 23 – Fri Dec 25 • Christmas Eve &amp; Day)</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              <strong>Hotel Base:</strong> Almanac X Alcron Prague (Štěpánská 40, steps from Wenceslas Square).<br />
+              <strong>Critical Payment Rule:</strong> Czechia uses the <strong>Czech Koruna (Kč / CZK)</strong>, NOT the Euro! 85–90% of stalls accept tap-to-pay cards (always choose CZK on the terminal and decline conversion). <strong>Never pay in Euro cash at market huts</strong> (vendors charge a 15–20% markup).
+            </p>
+            <div class="city-meta-pills">
+              <span class="meta-pill">🪙 Currency: Czech Koruna (CZK / Kč)</span>
+              <span class="meta-pill">💵 Cash for 4 Adults: 1,500–2,500 CZK (~€60–€100)</span>
+              <span class="meta-pill">💳 85–90% Contactless Tap-to-Pay</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="selectCityOnMap('prague')">🗺️ View Prague on Interactive Map</button>
+        </div>
+
+        <div class="markets-grid">
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open All Holidays (to Jan 6)</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">10m Walk from Hotel</span>
+              </div>
+              <h4>Old Town Square Market (Staroměstské náměstí)</h4>
+              <div class="market-hours">🕒 Daily 10:00 AM – 10:00 PM (Food huts until midnight; fully open Dec 24 &amp; 25!)</div>
+              <p class="market-desc">One of Europe's most cinematic Christmas markets, framed by the twin Gothic spires of Týn Church and the 1410 Astronomical Clock. Features a raised panoramic viewing bridge, blacksmiths, and hand-blown Bohemian glass ornaments.</p>
+              <div class="market-highlights">
+                <div><strong>✨ Hourly Tree Light Show:</strong> Every hour at <strong>4:30, 5:30, 6:30, 7:30, 8:30 &amp; 9:30 PM</strong>.</div>
+                <div><strong>🎶 Christmas Eve Special:</strong> Live open-air <em>Czech Christmas Mass</em> on the stage on <strong>Thu, Dec 24 at 9:00 PM</strong>.</div>
+                <div><strong>🥞 What to Eat:</strong> Crispy garlic <em>Bramboráky</em> (potato pancakes), <em>Langoš</em>, and charcoal-grilled <em>Trdelník</em>.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('prg-oldtown')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Old+Town+Square+Prague&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 10m Walk from Hotel</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">Open All Holidays (to Jan 6)</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Steps from Hotel</span>
+              </div>
+              <h4>Wenceslas Square (Václavské náměstí) &amp; Prague Castle</h4>
+              <div class="market-hours">🕒 Wenceslas: 10 AM – 10 PM | Prague Castle: Dec 24 (10 AM–4 PM), Dec 25 (10 AM–6 PM)</div>
+              <p class="market-desc"><strong>Wenceslas Square</strong> sits right outside your hotel door at Almanac X Alcron, while <strong>Prague Castle's St. George's Square Market</strong> crowns the hilltop behind St. Vitus Cathedral (ride Tram 22 up and walk down through Malá Strana &amp; Kampa Island!).</p>
+              <div class="market-highlights">
+                <div><strong>⚠️ Prague Ham Warning:</strong> Spit-roasted <em>Pražská šunka</em> is priced by weight (per 100g). Always ask for <strong>"150 grams, please"</strong> before they slice, or they will hand you a €30 plate!</div>
+                <div><strong>🍷 Drinks:</strong> Citrus-spiced <em>Svařák</em> and hot <em>Medovina</em> (Czech honey mead).</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('prg-castle')">🎯 Show Castle on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=St.+George's+Square+Prague+Castle&travelmode=transit" target="_blank" rel="noopener" class="btn btn-directions">🚋 Tram 22 Route</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-urgent">🚨 Dec 23 &amp; Dec 24 Cutoffs!</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Vinohrady &amp; Charles Bridge</span>
+              </div>
+              <h4>Náměstí Míru (Closes Dec 24) &amp; Charles Bridge Lamplighter (Ends Dec 23)</h4>
+              <div class="market-hours">🕒 Lamplighter: Final Walk Wed Dec 23 at 4:05 PM | Náměstí Míru: 10 AM – 8 PM through Dec 24</div>
+              <p class="market-desc">Catch two time-sensitive local gems: the costumed 19th-century <strong>Gas-Lamp Lighter on Charles Bridge</strong> on his final day (<strong>Wed, Dec 23 at 4:05 PM</strong>), and the residents' favorite neighborhood market at <strong>Náměstí Míru</strong> in front of St. Ludmila Church before it closes after <strong>Thu, Dec 24</strong>.</p>
+              <div class="market-highlights">
+                <div><strong>💡 Why Locals Love Náměstí Míru:</strong> Authentic Czech crafts, mistletoe, and pastures at prices 25–30% lower than Old Town Square.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('prg-miru')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Miru+Prague&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 12m Walk from Hotel</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CITY 4: VIENNA -->
+      <div class="city-section-block" id="city-vienna" style="margin-bottom:0;">
+        <div class="city-banner" style="border-left-color:#ca8a04;">
+          <div class="city-banner-info">
+            <h3>🇦🇹 Stop 4: Vienna, Austria (Sat Dec 26 &amp; Sun Dec 27 • The Two-Day Split)</h3>
+            <p style="color:var(--text-muted);font-size:0.93rem;">
+              <strong>Hotel Base:</strong> Novotel Wien Hauptbahnhof (Canettistraße 6, 3-minute walk from the train platform &amp; U1 Metro).<br />
+              <strong>⚠️ Markets Already Closed Before Dec 26 (Do Not Visit):</strong> <em>Karlsplatz (Art Advent)</em>, <em>Spittelberg</em>, <em>Freyung</em>, <em>Am Hof</em>, and <em>Altes AKH</em> all close on Dec 23. Follow the exact <strong>Sat Dec 26 vs. Sun Dec 27 split</strong> below so you don't miss a single open market!
+            </p>
+            <div class="city-meta-pills">
+              <span class="meta-pill">💶 Currency: Euro (€ EUR)</span>
+              <span class="meta-pill">💵 Cash for 4 Adults: €150–€200 EUR</span>
+              <span class="meta-pill">🚇 Transit: 24h (€8) or 48h (€14.10) Wiener Linien Pass</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary" onclick="selectCityOnMap('vienna')">🗺️ View Vienna on Interactive Map</button>
+        </div>
+
+        <div class="markets-grid">
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-urgent">🚨 FINAL DAY: Sat Dec 26 (Closes 7 PM)</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Sat Afternoon Stop #1 &amp; #2</span>
+              </div>
+              <h4>Stephansplatz &amp; Maria-Theresien-Platz Markets</h4>
+              <div class="market-hours">🕒 Sat Dec 26 Final Day: 11:00 AM – 7:00 PM (CLOSED Sunday, Dec 27!)</div>
+              <p class="market-desc">Drop your bags at Novotel on Saturday, Dec 26 and take the U1 Metro 6 minutes to <strong>Stephansplatz</strong> (surrounding St. Stephen's Cathedral). Then stroll beneath the giant crystal chandeliers of the <em>Graben</em> through the Hofburg Palace to <strong>Maria-Theresien-Platz</strong> (70 stalls framed by the twin imperial museums)—both close permanently at 7:00 PM on Dec 26!</p>
+              <div class="market-highlights">
+                <div><strong>🍹 Must-Try Punch:</strong> <em>Apfelstrudel-Punsch</em>, <em>Orangenpunsch</em>, and creamy <em>Eierlikör-Punsch</em> in collectible ceramic mugs.</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('vie-stephansplatz')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Stephansplatz,Vienna&destination=Maria-Theresien-Platz,Vienna&waypoints=Graben,Vienna&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 Cathedral → Museums Walk</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-urgent">🚨 FINAL DAY: Sat Dec 26 (Closes 10 PM)</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Sat Evening Stop #3</span>
+              </div>
+              <h4>Wiener Christkindlmarkt at Rathausplatz (City Hall)</h4>
+              <div class="market-hours">🕒 Sat Dec 26 Final Day: 10:00 AM – 10:00 PM (Stalls CLOSED Dec 27; Ice Dream stays open)</div>
+              <p class="market-desc">Walk 6 minutes north from Maria-Theresien-Platz to spend Saturday evening (7:00–10:00 PM) at Vienna's flagship City Hall market on its final night of the season! Admire the glowing <strong>Herzerlbaum (Tree of Hearts)</strong>, the monumental multi-level carousel, and skaters gliding along the romantic <strong>Wiener Eistraum</strong> park trails.</p>
+              <div class="market-highlights">
+                <div><strong>🌭 What to Eat:</strong> Cheese-stuffed <em>Käsekrainer</em> sausage, giant sweet/savory Viennese <em>Brezel</em>, pan-fried <em>Bauerngröstl</em>, and paper cones of roasted <em>Maroni</em> (chestnuts).</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('vie-rathaus')">🎯 Show on Map</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Maria-Theresien-Platz+Vienna&destination=Rathausplatz+Vienna&travelmode=walking" target="_blank" rel="noopener" class="btn btn-directions">🚶 6m Walk from Museums</a>
+            </div>
+          </div>
+
+          <div class="market-card">
+            <div class="market-card-top">
+              <div class="market-status-row">
+                <span class="status-badge status-open">✅ OPEN Sunday Dec 27!</span>
+                <span style="font-size:0.78rem;color:var(--text-muted);">Sun Dec 27 Full-Day Trio</span>
+              </div>
+              <h4>Belvedere Palace, Schönbrunn Palace &amp; Prater Riesenradplatz</h4>
+              <div class="market-hours">🕒 Sun Dec 27: Belvedere (11 AM–5 PM) • Schönbrunn (10 AM–7 PM) • Prater (11 AM–10 PM)</div>
+              <p class="market-desc">On <strong>Sunday, Dec 27</strong>, follow this royal sequence: <strong>1) 11:00 AM:</strong> Walk 10 mins from your hotel to <strong>Upper Belvedere Palace K&amp;K Market</strong> for <em>Kaiserschmarren</em> (closes at 5:00 PM!). <strong>2) 2:30 PM:</strong> Ride U4 to <strong>Schönbrunn Palace</strong> (hike the Gloriette hill before 3:45 PM sunset; market open until 7:00 PM). <strong>3) 7:00 PM:</strong> Finish under the 1897 Giant Ferris Wheel at <strong>Prater Wintermarkt</strong> (live stage music at 7 PM, open until 10 PM!).</p>
+              <div class="market-highlights">
+                <div><strong>🎡 Sunday Evening Highlight:</strong> Ride the historic wooden cabanas of the <em>Wiener Riesenrad</em> at night for sparkling Danube &amp; skyline views!</div>
+              </div>
+            </div>
+            <div class="market-card-footer">
+              <button type="button" class="btn btn-map" onclick="focusPoi('vie-schoenbrunn')">🎯 Show Schönbrunn</button>
+              <a href="https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Riesenradplatz,Wien&waypoints=Upper+Belvedere,Wien|Schoenbrunn+Palace,Wien&travelmode=transit" target="_blank" rel="noopener" class="btn btn-directions">🚇 Full Sun Dec 27 Loop</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CASH, CURRENCY & MUG DEPOSIT (PFAND) CALCULATOR FOR 4 ADULTS -->
+    <section id="cash-section" class="section">
+      <div class="section-header">
+        <span class="section-eyebrow">Money &amp; Banking Strategy</span>
+        <h2 class="section-title">How Much Cash to Bring for 4 Adults &amp; Currency Breakdown</h2>
+        <p class="section-subtitle">
+          Physical cash remains essential at German and Austrian Christmas markets (especially for €3–€5 ceramic mug deposits), whereas Prague is 85–90% contactless and uses the Czech Koruna (CZK).
+        </p>
+      </div>
+
+      <div class="cash-grid">
+        <!-- Currency Breakdown Table -->
+        <div class="currency-table-card">
+          <h3>💶 Recommended Cash &amp; Currency Table (Total for 4 Adults)</h3>
+          <table class="currency-table">
+            <thead>
+              <tr>
+                <th>City &amp; Dates</th>
+                <th>Currency</th>
+                <th>Cash for 4 Adults</th>
+                <th>Card vs. Cash &amp; Key Rules</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🇩🇪 Munich</strong><br /><span style="font-size:0.78rem;color:var(--text-muted);">Dec 20, 21 Eve &amp; 22</span></td>
+                <td><strong>Euro (€ EUR)</strong></td>
+                <td><strong>€200 – €250 EUR</strong><br /><span style="font-size:0.76rem;color:var(--text-muted);">(in €5, €10, €20 notes)</span></td>
+                <td>~45% of stalls are cash-only. Almost all drink huts require cash for the <strong>€3–€5 mug deposit (<em>Pfand</em>)</strong>.</td>
+              </tr>
+              <tr>
+                <td><strong>🥨 Nuremberg</strong><br /><span style="font-size:0.78rem;color:var(--text-muted);">Mon, Dec 21 Day Trip</span></td>
+                <td><strong>Euro (€ EUR)</strong></td>
+                <td><strong>€120 – €150 EUR</strong></td>
+                <td>Needed for <em>Drei im Weggla</em> sausage huts, <em>Pfand</em> deposits, and handmade <em>Zwetschgenmännla</em> prune figures.</td>
+              </tr>
+              <tr>
+                <td><strong>🇨🇿 Prague</strong><br /><span style="font-size:0.78rem;color:var(--text-muted);">Dec 23 – Dec 25</span></td>
+                <td><strong>Czech Koruna (Kč / CZK)</strong></td>
+                <td><strong>1,500 – 2,500 CZK</strong><br /><span style="font-size:0.76rem;color:var(--text-muted);">(~€60–€100 / $90–$150 CAD)</span></td>
+                <td><strong>85–90% contactless!</strong> Drinks come in paper cups (no mug deposit). <strong>NEVER pay with Euro cash</strong> (15–20% worse rate). Keep 20 CZK coins for public restrooms.</td>
+              </tr>
+              <tr>
+                <td><strong>🇦🇹 Vienna</strong><br /><span style="font-size:0.78rem;color:var(--text-muted);">Dec 26 – Dec 27</span></td>
+                <td><strong>Euro (€ EUR)</strong></td>
+                <td><strong>€150 – €200 EUR</strong></td>
+                <td>~60% take cards, but <em>Maroni</em> chestnut carts and <strong>€4–€5 ceramic mug deposits (<em>Häferlpfand</em>)</strong> are much faster with cash.</td>
+              </tr>
+              <tr>
+                <td><strong>🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</strong><br /><span style="font-size:0.78rem;color:var(--text-muted);">Dec 28 – Dec 31</span></td>
+                <td><strong>British Pound (£ GBP)</strong></td>
+                <td><strong>£30 – £40 GBP</strong></td>
+                <td>Nearly 100% contactless tap-to-pay across Glasgow &amp; Edinburgh.</td>
+              </tr>
+              <tr style="background:var(--gold-light);font-weight:700;">
+                <td><strong>TOTAL TRIP CASH</strong></td>
+                <td><strong>EUR + CZK + GBP</strong></td>
+                <td colspan="2"><strong>€470 – €600 EUR</strong> &nbsp;+&nbsp; <strong>1,500 – 2,500 CZK</strong> &nbsp;+&nbsp; <strong>£30 – £40 GBP</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:1.15rem;padding:0.95rem;background:var(--crimson-light);border-radius:var(--radius-sm);font-size:0.86rem;color:var(--crimson-dark);">
+            <strong>🏧 ATM Pro Tip (Avoid Euronet!):</strong> Never use standalone blue-and-yellow <em>Euronet</em> ATMs (they charge 13–15% dynamic currency conversion markups + high fees). Only use ATMs attached to real bank branches:
+            <strong>Germany:</strong> <em>Sparkasse</em> or <em>Deutsche Bank</em> •
+            <strong>Prague:</strong> <em>Česká spořitelna</em>, <em>ČSOB</em>, or <em>Komerční banka</em> •
+            <strong>Vienna:</strong> <em>Erste Bank</em> or <em>Bank Austria</em>. Always select <strong>"Continue without conversion / Charge in local currency (EUR or CZK)"</strong>!
+          </div>
+        </div>
+
+        <!-- Interactive Pfand & Daily Cash Calculator -->
+        <div class="pfand-calc-card">
+          <h3>☕ Interactive Daily Cash &amp; Mug Deposit (<em>Pfand</em>) Estimator (4 Adults)</h3>
+          <p style="font-size:0.86rem;color:var(--text-muted);margin:0.5rem 0 1.15rem;">
+            In Munich, Nuremberg, and Vienna, every mug of Glühwein (~€5.50) carries a <strong>€3.00–€5.00 refundable cash deposit (<em>Pfand</em>)</strong>. For 4 adults ordering a single round of drinks, you hand over ~€40 upfront and receive €16–€20 cash back when returning the mugs and plastic tokens (<em>Pfandmarken</em>)!
+          </p>
+
+          <div class="calc-control">
+            <label for="calc-rounds">
+              <span>🍷 Rounds of Glühwein / Punsch per Day (for 4 Adults):</span>
+              <span id="val-rounds" style="color:var(--crimson-main);">2 rounds (4 mugs/round)</span>
+            </label>
+            <input type="range" id="calc-rounds" min="1" max="5" value="2" />
+          </div>
+
+          <div class="calc-control">
+            <label for="calc-snacks">
+              <span>🌭 Sausages / Food / Pastry Stops per Day (for 4 Adults):</span>
+              <span id="val-snacks" style="color:var(--crimson-main);">3 snack/food stops</span>
+            </label>
+            <input type="range" id="calc-snacks" min="1" max="6" value="3" />
+          </div>
+
+          <div class="calc-control">
+            <label for="calc-keep">
+              <span>🎁 Souvenir Mugs Kept per Day (Don't Return Deposit):</span>
+              <span id="val-keep" style="color:var(--crimson-main);">1 souvenir mug</span>
+            </label>
+            <input type="range" id="calc-keep" min="0" max="4" value="1" />
+          </div>
+
+          <div class="calc-result-box">
+            <div class="calc-result-row">
+              <span>Hot Drinks (4 Adults):</span>
+              <span id="res-drinks">€44 EUR</span>
+            </div>
+            <div class="calc-result-row">
+              <span>Upfront Mug Deposit Float (Refundable):</span>
+              <span id="res-pfand">€18 EUR (refundable float)</span>
+            </div>
+            <div class="calc-result-row">
+              <span>Sausages, Savories &amp; Sweets (4 Adults):</span>
+              <span id="res-food">€78 EUR</span>
+            </div>
+            <div class="calc-result-row total">
+              <span>Daily Cash Needed in Pocket:</span>
+              <span id="res-total">€145 EUR in pocket (Net spent: €127)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: INTERACTIVE FOOD, DRINK & TRADITION BINGO CHECKLIST -->
+    <section id="checklist-section" class="section">
+      <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <span class="section-eyebrow">Interactive Family Tracker</span>
+          <h2 class="section-title">16 Must-Eat Foods, Drinks &amp; Traditions Checklist</h2>
+          <p class="section-subtitle">
+            Tap any item below as your family experiences it—your progress saves automatically to your phone's browser!
+          </p>
+        </div>
+        <div id="checklist-progress" style="background:var(--forest-main);color:#fde047;padding:0.55rem 1.1rem;border-radius:999px;font-weight:700;font-size:0.9rem;">
+          0 / 16 Completed
+        </div>
+      </div>
+
+      <div id="checklist-container" class="checklist-grid">
+        <!-- Populated dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 7: INSIDER TIPS, TRICKS & ESSENTIAL PHRASEBOOK -->
+    <section id="tips-section" class="section" style="border-bottom:none;">
+      <div class="section-header">
+        <span class="section-eyebrow">Pro Travel Guide Secrets</span>
+        <h2 class="section-title">Expert Christmas Market Tips, Tricks &amp; Local Phrases</h2>
+        <p class="section-subtitle">
+          How to navigate peak evening crowds, get clean souvenir mugs, stay warm on frozen cobblestones, and speak like a local.
+        </p>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <h4>🍻 1. The "Table Scout" System for 4 Adults</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Standing high-top tables (<em>Stehtische</em>) around Glühwein huts fill up fast between 5:00 PM and 8:00 PM. Split your group of 4 into two pairs: have two people claim half a standing table while the other two buy the four drinks and sausages. Sharing tables with locals is standard etiquette!
+          </p>
+          <div class="phrase-box">
+            <span class="phrase-native">🇩🇪 "Entschuldigung, ist hier noch frei?"</span>
+            <span><em>(Ent-SHOOL-dee-goong, ist heer nokh fry?)</em> — "Excuse me, is this spot free?"</span>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <h4>☕ 2. How to Swap a Sticky Mug for a Clean Souvenir Mug</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Always keep the small plastic deposit token (<em>Pfandmarke</em>) handed to you with your mug—you need BOTH the mug and token to get your €3–€5 back! If you want to keep a year-dated mug as a souvenir, your deposit covers the purchase, and you can trade your sticky used mug for a clean boxed one:
+          </p>
+          <div class="phrase-box">
+            <span class="phrase-native">🇩🇪 "Können wir eine frische Tasse zum Mitnehmen haben?"</span>
+            <span>"Can we trade this used mug for a clean one to take home?"</span>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <h4>🥾 3. Footwear Soles Beat Coat Thickness</h4>
+          <p style="font-size:0.88rem;color:var(--text-muted);">
+            Standing on freezing cobblestones for 4–6 hours drains body heat straight through thin rubber sneaker soles. Wear waterproof boots with thick merino wool socks (or slip adhesive toe-warmers inside your boots), and wear breathable layers you can unzip on heated U-Bahn trains.
+          </p>
+          <div class="phrase-box">
+            <span class="phrase-native">🧤 Pocket Napkin &amp; Wet-Wipe Trick:</span>
+            <span>Carry a small pack of wet wipes—candied almonds, powdered sugar, and mustard on wool gloves are an everyday hazard!</span>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <h4>🗣️ 4. Quick German &amp; Czech Ordering Phrases</h4>
+          <div class="phrase-box">
+            <span class="phrase-native">🇩🇪 "Vier Glühwein, bitte!" / "Drei im Weggla, bitte!"</span>
+            <span>"Four mulled wines, please!" / "Three Nuremberg sausages in a roll, please!"</span>
+          </div>
+          <div class="phrase-box">
+            <span class="phrase-native">🇩🇪 "Zahlen, bitte — zusammen / getrennt"</span>
+            <span>"The bill, please — together / separate"</span>
+          </div>
+          <div class="phrase-box">
+            <span class="phrase-native">🇨🇿 "Dobrý den! Čtyři svařáky, prosím. Děkuji!"</span>
+            <span><em>(DOB-ree den! CHTIH-zhee SVAH-zhah-kih, PRO-seem. DYEH-koo-yi!)</em> — "Hello! Four mulled wines, please. Thank you!"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p><strong>🎄 2026 Family Christmas Markets Companion Guide</strong> • Munich • Nuremberg • Prague • Vienna • Scotland</p>
+    <p style="margin-top:0.4rem;">
+      Built for GitHub Pages (<a href="https://github.com/jasmah/christmas_market_2026" target="_blank" rel="noopener">github.com/jasmah/christmas_market_2026</a>) &nbsp;|&nbsp;
+      <a href="https://trips.foratravel.com/i/bitacora-viajera-mx/awr9pzR1tG" target="_blank" rel="noopener">Open Fora Travel Booking Portal ↗</a>
+    </p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
