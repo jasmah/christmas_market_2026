@@ -1,505 +1,829 @@
-// Christmas Markets 2026 Family Trip Interactive App
-// Cities: Munich, Nuremberg (Dec 21 Day Trip), Prague, Vienna
+// Christmas Markets 2026: published hours and conservative planning estimates.
+// Sources and booking caveats are in index.html; checked November 15, 2026.
 
 const CITY_CONFIG = {
-  all: {
-    name: "All 4 Cities Overview",
-    center: [49.15, 13.8],
-    zoom: 6,
-    gmapQuery: "Munich+Nuremberg+Prague+Vienna+Christmas+Markets"
+  "all": {
+    "name": "All 4 Cities Overview",
+    "center": [
+      49.15,
+      13.8
+    ],
+    "zoom": 6,
+    "gmapQuery": "Munich+Nuremberg+Prague+Vienna+Christmas+Markets"
   },
-  munich: {
-    name: "Munich (Dec 20 & Dec 22 + Dec 21 Eve)",
-    center: [48.1385, 11.5680],
-    zoom: 14,
-    gmapQuery: "Marienplatz+Christkindlmarkt+Munich",
-    walkingLoops: [
+  "munich": {
+    "name": "Munich (Dec 20 & Dec 22 + Dec 21 Eve)",
+    "center": [
+      48.1385,
+      11.568
+    ],
+    "zoom": 14,
+    "gmapQuery": "Marienplatz+Christkindlmarkt+Munich",
+    "walkingLoops": [
       {
-        title: "Sun Dec 20 Arrival Loop: Ruby Rosi Hotel → Kripperlmarkt → Marienplatz",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich,Bayerstrasse+21,80335+Muenchen&destination=Marienplatz,80331+Muenchen&waypoints=Karlsplatz+Stachus,Muenchen|St.+Peter+Kripperlmarkt,Muenchen&travelmode=walking"
+        "title": "Dec 20: Ruby Rosi → Kripperlmarkt → Marienplatz (music 5:15 PM)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Marienplatz+Munich&travelmode=walking&waypoints=St+Peter+Munich"
       },
       {
-        title: "Tue Dec 22 Full Loop: Viktualienmarkt → Marienplatz → Residenz (Last Day!) → Medieval Market → Isartor Feuerzangenbowle",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Viktualienmarkt,Muenchen&destination=Isartor,Muenchen&waypoints=Marienplatz,Muenchen|Weihnachtsdorf+im+Kaiserhof+der+Residenz,Muenchen|Wittelsbacherplatz,Muenchen&travelmode=walking"
+        "title": "Dec 22 afternoon: Viktualienmarkt → Residenz (final close 8 PM) → Medieval Market",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Viktualienmarkt+Munich&destination=Wittelsbacherplatz+Munich&travelmode=walking&waypoints=Marienplatz+Munich%7CWeihnachtsdorf+Kaiserhof+Residenz+Munich"
       },
       {
-        title: "Mon Dec 21 Evening Walk: Ruby Rosi Hotel → Tollwood Winterfestival (Theresienwiese)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich,Bayerstrasse+21,80335+Muenchen&destination=Theresienwiese+Tollwood,Muenchen&travelmode=walking"
+        "title": "Optional Monday Tollwood: allow 20–30 minutes to entrance",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Tollwood+Winterfestival+Theresienwiese+Munich&travelmode=walking"
       }
     ],
-    routeCoords: [
-      [48.1398, 11.5588], // Ruby Rosi Hotel
-      [48.1391, 11.5658], // Karlsplatz Stachus
-      [48.1365, 11.5755], // Kripperlmarkt / St. Peter
-      [48.1374, 11.5755], // Marienplatz
-      [48.1353, 11.5763], // Viktualienmarkt
-      [48.1412, 11.5782], // Residenz Kaiserhof
-      [48.1433, 11.5762]  // Wittelsbacherplatz Medieval Market
+    "routeCoords": [
+      [
+        48.1398,
+        11.5588
+      ],
+      [
+        48.1391,
+        11.5658
+      ],
+      [
+        48.1365,
+        11.5755
+      ],
+      [
+        48.1374,
+        11.5755
+      ],
+      [
+        48.1353,
+        11.5763
+      ],
+      [
+        48.1412,
+        11.5782
+      ],
+      [
+        48.1433,
+        11.5762
+      ]
     ]
   },
-  nuremberg: {
-    name: "Nuremberg Day Trip (Mon, Dec 21)",
-    center: [49.4515, 11.0775],
-    zoom: 15,
-    gmapQuery: "Nuernberger+Christkindlesmarkt+Hauptmarkt+Nuremberg",
-    walkingLoops: [
+  "nuremberg": {
+    "name": "Nuremberg Day Trip (Mon, Dec 21)",
+    "center": [
+      49.4515,
+      11.0775
+    ],
+    "zoom": 15,
+    "gmapQuery": "Nuernberger+Christkindlesmarkt+Hauptmarkt+Nuremberg",
+    "walkingLoops": [
       {
-        title: "Mon Dec 21 Full Nuremberg Spine: Hbf → Handwerkerhof → St. Lorenz → Museumsbrücke → Hauptmarkt → Sister Cities → Kinderweihnacht → Feuerzangenbowle",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Fleischbruecke,Nuernberg&waypoints=Handwerkerhof+Nuernberg|Lorenzkirche+Nuernberg|Museumsbruecke+Nuernberg|Hauptmarkt+Nuernberg|Schoener+Brunnen+Nuernberg|Rathausplatz+Nuernberg|Hans-Sachs-Platz+Nuernberg&travelmode=walking"
+        "title": "Dec 21 morning: Hbf → St Lorenz → Museumsbrücke → Hauptmarkt (noon clock)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=N%C3%BCrnberg+Hauptbahnhof&destination=Hauptmarkt+N%C3%BCrnberg&travelmode=walking&waypoints=Lorenzkirche+N%C3%BCrnberg%7CMuseumsbr%C3%BCcke+N%C3%BCrnberg"
       },
       {
-        title: "Train Route: München Hbf → Nürnberg Hbf (ICE High-Speed 1h 05m)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Muenchen+Hauptbahnhof&destination=Nuernberg+Hauptbahnhof&travelmode=transit"
+        "title": "Dec 21 afternoon: Hauptmarkt → Sister Cities → Kinderweihnacht → Fleischbrücke",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+N%C3%BCrnberg&destination=Fleischbr%C3%BCcke+N%C3%BCrnberg&travelmode=walking&waypoints=Rathausplatz+N%C3%BCrnberg%7CHans-Sachs-Platz+N%C3%BCrnberg"
+      },
+      {
+        "title": "Dec 21 return: Fleischbrücke → Handwerkerhof (shops until 6 PM) → Hbf",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Fleischbr%C3%BCcke+N%C3%BCrnberg&destination=N%C3%BCrnberg+Hauptbahnhof&travelmode=walking&waypoints=Handwerkerhof+N%C3%BCrnberg"
+      },
+      {
+        "title": "Munich → Nuremberg: check actual ICE booking in DB",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=M%C3%BCnchen+Hauptbahnhof&destination=N%C3%BCrnberg+Hauptbahnhof&travelmode=transit"
       }
     ],
-    routeCoords: [
-      [49.4456, 11.0829], // Nürnberg Hbf
-      [49.4472, 11.0812], // Handwerkerhof
-      [49.4510, 11.0788], // St. Lorenz
-      [49.4527, 11.0778], // Museumsbrücke
-      [49.4539, 11.0773], // Hauptmarkt
-      [49.4545, 11.0770], // Schöner Brunnen
-      [49.4552, 11.0777], // Rathausplatz (Sister Cities)
-      [49.4536, 11.0795], // Hans-Sachs-Platz (Kinderweihnacht)
-      [49.4528, 11.0764]  // Fleischbrücke (Feuerzangenbowle)
+    "routeCoords": [
+      [
+        49.4456,
+        11.0829
+      ],
+      [
+        49.451,
+        11.0788
+      ],
+      [
+        49.4527,
+        11.0778
+      ],
+      [
+        49.4539,
+        11.0773
+      ],
+      [
+        49.4552,
+        11.0777
+      ],
+      [
+        49.4536,
+        11.0795
+      ],
+      [
+        49.4528,
+        11.0764
+      ],
+      [
+        49.4472,
+        11.0812
+      ],
+      [
+        49.4456,
+        11.0829
+      ]
     ]
   },
-  prague: {
-    name: "Prague (Wed, Dec 23 – Fri, Dec 25)",
-    center: [50.0845, 14.4185],
-    zoom: 14,
-    gmapQuery: "Old+Town+Square+Christmas+Market+Prague",
-    walkingLoops: [
+  "prague": {
+    "name": "Prague (Wed, Dec 23 – Fri, Dec 25)",
+    "center": [
+      50.0845,
+      14.4185
+    ],
+    "zoom": 14,
+    "gmapQuery": "Old+Town+Square+Christmas+Market+Prague",
+    "walkingLoops": [
       {
-        title: "Wed Dec 23 Arrival Loop: Almanac X Alcron → Charles Bridge (4:05 PM Gas Lamplighter!) → Old Town Square → Wenceslas Square",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague,Stepanska+40,Prague&destination=Wenceslas+Square,Prague&waypoints=Charles+Bridge,Prague|Old+Town+Square,Prague&travelmode=walking"
+        "title": "Dec 23: hotel → Old Town Bridge Tower (target 3:45 PM; lamplighter unconfirmed)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Old+Town+Bridge+Tower+Prague&travelmode=walking"
       },
       {
-        title: "Wed/Thu Local Market Walk: Almanac X Alcron → Náměstí Míru (Closes Dec 24!)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague,Stepanska+40,Prague&destination=Namesti+Miru,Prague&travelmode=walking"
+        "title": "Dec 23 bridge → Náměstí Míru: allow 35–45 minutes including Metro A",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Old+Town+Bridge+Tower+Prague&destination=N%C3%A1m%C4%9Bst%C3%AD+M%C3%ADru+Prague&travelmode=transit"
       },
       {
-        title: "Thu Dec 24 / Fri Dec 25 Castle-to-Old-Town Walk: Prague Castle → Malá Strana → Kampa Island → Charles Bridge → Old Town Square",
-        url: "https://www.google.com/maps/dir/?api=1&origin=St.+George's+Square+Prague+Castle&destination=Old+Town+Square,Prague&waypoints=Na+Kampe,Prague|Charles+Bridge,Prague&travelmode=walking"
+        "title": "Hotel → Náměstí Míru: allow 15–20 minutes walking",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=N%C3%A1m%C4%9Bst%C3%AD+M%C3%ADru+Prague&travelmode=walking"
+      },
+      {
+        "title": "Optional Dec 25: Castle → Malá Strana → Charles Bridge → Old Town",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Prague+Castle&destination=Old+Town+Square+Prague&travelmode=walking&waypoints=Malostransk%C3%A9+n%C3%A1m%C4%9Bst%C3%AD+Prague%7CCharles+Bridge+Prague"
       }
     ],
-    routeCoords: [
-      [50.0755, 14.4370], // Náměstí Míru
-      [50.0803, 14.4263], // Almanac X Alcron Prague
-      [50.0819, 14.4266], // Wenceslas Square Lower
-      [50.0846, 14.4205], // Havel's Market
-      [50.0875, 14.4213], // Old Town Square
-      [50.0865, 14.4114], // Charles Bridge
-      [50.0858, 14.4084], // Kampa Island
-      [50.0911, 14.4016]  // Prague Castle (St. George's Square)
+    "routeCoords": [
+      [
+        50.0803,
+        14.4263
+      ],
+      [
+        50.0865,
+        14.4138
+      ],
+      [
+        50.0755,
+        14.437
+      ],
+      [
+        50.0803,
+        14.4263
+      ]
     ]
   },
-  vienna: {
-    name: "Vienna (Sat, Dec 26 – Sun, Dec 27)",
-    center: [48.2020, 16.3650],
-    zoom: 13,
-    gmapQuery: "Rathausplatz+Christkindlmarkt+Vienna",
-    walkingLoops: [
+  "vienna": {
+    "name": "Vienna (Sat, Dec 26 – Sun, Dec 27)",
+    "center": [
+      48.202,
+      16.365
+    ],
+    "zoom": 13,
+    "gmapQuery": "Rathausplatz+Christkindlmarkt+Vienna",
+    "walkingLoops": [
       {
-        title: "🚨 SAT DEC 26 URGENT FINAL-DAY LOOP: Stephansplatz (closes 7 PM) → Graben → Maria-Theresien-Platz (closes 7 PM) → Rathausplatz (closes 10 PM)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Stephansplatz,Vienna&destination=Rathausplatz,Vienna&waypoints=Graben,Vienna|Hofburg,Vienna|Maria-Theresien-Platz,Vienna&travelmode=walking"
+        "title": "Dec 26 FIRST: hotel → Maria-Theresien-Platz (plan before 4 PM; official hours conflict)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Maria-Theresien-Platz+Vienna&travelmode=transit"
       },
       {
-        title: "SUN DEC 27 IMPERIAL LOOP: Novotel Wien Hbf → Belvedere Palace Market (11 AM–5 PM) → Schönbrunn Palace (until 7 PM) → Prater Riesenradplatz (until 10 PM)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof,Canettistrasse+6,1100+Wien&destination=Riesenradplatz,1020+Wien&waypoints=Upper+Belvedere,Wien|Schoenbrunn+Palace,Wien&travelmode=transit"
+        "title": "Dec 26: Maria-Theresien-Platz → Hofburg → Stephansplatz (7 PM close)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Maria-Theresien-Platz+Vienna&destination=Stephansplatz+Vienna&travelmode=walking&waypoints=Hofburg+Vienna%7CGraben+Vienna"
       },
       {
-        title: "Quick U1 Metro Hop: Novotel Wien Hbf → Stephansplatz (6 mins)",
-        url: "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof,Canettistrasse+6,1100+Wien&destination=Stephansplatz,1010+Wien&travelmode=transit"
+        "title": "Dec 26 evening: Stephansplatz → Rathausplatz (10 PM final close)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Stephansplatz+Vienna&destination=Rathausplatz+Vienna&travelmode=walking"
+      },
+      {
+        "title": "Dec 27 leg 1: hotel → Upper Belvedere (allow 15–20 minutes)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Upper+Belvedere+Vienna&travelmode=walking"
+      },
+      {
+        "title": "Dec 27 leg 2: Belvedere → Schönbrunn (allow 45–60 minutes)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Upper+Belvedere+Vienna&destination=Sch%C3%B6nbrunn+Palace+Vienna&travelmode=transit"
+      },
+      {
+        "title": "Optional Dec 27 leg 3: Schönbrunn → Prater (allow 45–60 minutes)",
+        "url": "https://www.google.com/maps/dir/?api=1&origin=Sch%C3%B6nbrunn+Palace+Vienna&destination=Riesenradplatz+Vienna&travelmode=transit"
       }
     ],
-    routeCoords: [
-      [48.2085, 16.3732], // Stephansplatz
-      [48.2088, 16.3694], // Graben / Kohlmarkt
-      [48.2045, 16.3607], // Maria-Theresien-Platz
-      [48.2108, 16.3573]  // Rathausplatz
+    "routeCoords": [
+      [
+        48.2045,
+        16.3607
+      ],
+      [
+        48.2064,
+        16.365
+      ],
+      [
+        48.2088,
+        16.3694
+      ],
+      [
+        48.2085,
+        16.3732
+      ],
+      [
+        48.2108,
+        16.3573
+      ]
     ]
   }
 };
 
 const POIS = [
-  // MUNICH
   {
-    id: "muc-hotel",
-    city: "munich",
-    name: "Ruby Rosi Hotel Munich by IHG",
-    type: "hotel",
-    typeLabel: "Hotel Base",
-    coords: [48.1398, 11.5588],
-    dates: "Check-in Sun Dec 20 – Check-out Wed Dec 23",
-    hours: "Bayerstraße 21, 80335 München (Across from Hauptbahnhof)",
-    alert: "2-min walk to München Hbf for Mon Dec 21 Nuremberg ICE train",
-    gmapSearch: "Ruby+Rosi+Hotel+Munich+Bayerstrasse+21",
-    dirFromHotel: "https://www.google.com/maps/search/?api=1&query=Ruby+Rosi+Hotel+Munich+Bayerstrasse+21"
+    "id": "muc-hotel",
+    "city": "munich",
+    "name": "Ruby Rosi Hotel Munich by IHG",
+    "type": "hotel",
+    "typeLabel": "Hotel Base",
+    "coords": [
+      48.1398,
+      11.5588
+    ],
+    "dates": "Check-in Sun Dec 20 – Check-out Wed Dec 23",
+    "hours": "Bayerstraße 21, 80335 München (Across from Hauptbahnhof)",
+    "alert": "Allow 10–15 minutes inside München Hbf; confirm platform access during construction.",
+    "gmapSearch": "Ruby+Rosi+Hotel+Munich+Bayerstrasse+21",
+    "dirFromHotel": "https://www.google.com/maps/search/?api=1&query=Ruby+Rosi+Hotel+Munich+Bayerstrasse+21"
   },
   {
-    id: "muc-marienplatz",
-    city: "munich",
-    name: "Münchner Christkindlmarkt (Marienplatz)",
-    type: "market",
-    typeLabel: "Flagship Market",
-    coords: [48.1374, 11.5755],
-    dates: "Nov 20 – Dec 24, 2026",
-    hours: "Mon–Sat 10:00 AM – 9:00 PM | Sun 10:00 AM – 8:00 PM",
-    alert: "Live Rathaus Balcony Advent music at 5:30 PM on Sun Dec 20 & Tue Dec 22!",
-    gmapSearch: "Christkindlmarkt+Marienplatz+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Marienplatz+Munich&travelmode=walking"
+    "id": "muc-marienplatz",
+    "city": "munich",
+    "name": "Münchner Christkindlmarkt (Marienplatz)",
+    "type": "market",
+    "typeLabel": "Flagship Market",
+    "coords": [
+      48.1374,
+      11.5755
+    ],
+    "dates": "Nov 20 – Dec 24, 2026",
+    "hours": "Mon–Sat 10:00 AM – 9:00 PM | Sun 10:00 AM – 8:00 PM | Dec 24 closes 2 PM",
+    "alert": "Published balcony music Sunday–Thursday from 5:15 PM; arrive by 5 PM.",
+    "gmapSearch": "Christkindlmarkt+Marienplatz+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Marienplatz+Munich&travelmode=walking"
   },
   {
-    id: "muc-residenz",
-    city: "munich",
-    name: "Weihnachtsdorf im Kaiserhof der Residenz",
-    type: "market",
-    typeLabel: "🚨 Closes Dec 22",
-    coords: [48.1412, 11.5782],
-    dates: "Nov 16 – Dec 22, 2026 (FINAL DAY TUE DEC 22!)",
-    hours: "Daily 11:00 AM – 9:00 PM",
-    alert: "CRITICAL: Closes permanently for the season on Tuesday, Dec 22 at 9:00 PM!",
-    gmapSearch: "Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich&travelmode=transit"
+    "id": "muc-residenz",
+    "city": "munich",
+    "name": "Weihnachtsdorf im Kaiserhof der Residenz",
+    "type": "market",
+    "typeLabel": "🚨 Closes Dec 22",
+    "coords": [
+      48.1412,
+      11.5782
+    ],
+    "dates": "Nov 16 – Dec 22, 2026 (FINAL DAY TUE DEC 22!)",
+    "hours": "Usually 11 AM–9 PM; FINAL Dec 22: 11 AM–8 PM",
+    "alert": "Visit early afternoon Dec 22. Final-day close is 8 PM; vendor mug policies vary.",
+    "gmapSearch": "Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Weihnachtsdorf+im+Kaiserhof+der+Residenz+Munich&travelmode=transit"
   },
   {
-    id: "muc-medieval",
-    city: "munich",
-    name: "Mittelaltermarkt (Wittelsbacherplatz)",
-    type: "market",
-    typeLabel: "Medieval Market",
-    coords: [48.1433, 11.5762],
-    dates: "Nov 20 – Dec 23, 2026",
-    hours: "Daily 11:00 AM – 9:00 PM",
-    alert: "3-min walk from Residenz! Famous for Drachenblut hot mead & Feuerzangenbowle",
-    gmapSearch: "Mittelaltermarkt+Wittelsbacherplatz+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Wittelsbacherplatz+Munich&travelmode=transit"
+    "id": "muc-medieval",
+    "city": "munich",
+    "name": "Mittelaltermarkt (Wittelsbacherplatz)",
+    "type": "market",
+    "typeLabel": "Medieval Market",
+    "coords": [
+      48.1433,
+      11.5762
+    ],
+    "dates": "Nov 20 – Dec 23, 2026",
+    "hours": "Daily 11:00 AM – 9:00 PM",
+    "alert": "Allow 5–10 minutes from the Residenz courtyard entrance; confirm current operator hours.",
+    "gmapSearch": "Mittelaltermarkt+Wittelsbacherplatz+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Wittelsbacherplatz+Munich&travelmode=transit",
+    "sourceUrl": "https://www.mittelaltermarkt-muenchen.de/"
   },
   {
-    id: "muc-tollwood",
-    city: "munich",
-    name: "Tollwood Winterfestival (Theresienwiese)",
-    type: "market",
-    typeLabel: "Heated Tents",
-    coords: [48.1342, 11.5497],
-    dates: "Nov 24 – Dec 23, 2026",
-    hours: "Mon–Fri from 2:00 PM | Sat–Sun from 11:00 AM – ~10:30 PM",
-    alert: "12-min walk or 1 stop (U4/U5) from Ruby Rosi Hotel—ideal after Nuremberg on Dec 21!",
-    gmapSearch: "Tollwood+Winterfestival+Theresienwiese+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Theresienwiese+Munich&travelmode=walking"
+    "id": "muc-tollwood",
+    "city": "munich",
+    "name": "Tollwood Winterfestival (Theresienwiese)",
+    "type": "market",
+    "typeLabel": "Heated Tents",
+    "coords": [
+      48.1342,
+      11.5497
+    ],
+    "dates": "Nov 24 – Dec 23, 2026",
+    "hours": "Mon–Fri from 2 PM; Sat–Sun from 11 AM. Monday market/food closes 10:30 PM.",
+    "alert": "Optional after Nuremberg. Allow 20–30 minutes on foot to festival entrance.",
+    "gmapSearch": "Tollwood+Winterfestival+Theresienwiese+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Theresienwiese+Munich&travelmode=walking"
   },
   {
-    id: "muc-kripperl",
-    city: "munich",
-    name: "Kripperlmarkt & Rindermarkt Sternenplatzl",
-    type: "market",
-    typeLabel: "Nativity & Chalets",
-    coords: [48.1362, 11.5746],
-    dates: "Nov 20 – Dec 24, 2026",
-    hours: "Mon–Sat 10:00 AM – 9:00 PM | Sun 10:00 AM – 8:00 PM",
-    alert: "Right next to St. Peter's Church (climb Alter Peter tower for best view!)",
-    gmapSearch: "Rindermarkt+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Rindermarkt+Munich&travelmode=walking"
+    "id": "muc-kripperl",
+    "city": "munich",
+    "name": "Kripperlmarkt & Rindermarkt Sternenplatzl",
+    "type": "market",
+    "typeLabel": "Nativity & Chalets",
+    "coords": [
+      48.1362,
+      11.5746
+    ],
+    "dates": "Nov 20 – Dec 24, 2026",
+    "hours": "Mon–Sat 10:00 AM – 9:00 PM | Sun 10:00 AM – 8:00 PM | Dec 24 closes 2 PM",
+    "alert": "Right next to St. Peter's Church (climb Alter Peter tower for best view!)",
+    "gmapSearch": "Rindermarkt+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Rindermarkt+Munich&travelmode=walking"
   },
   {
-    id: "muc-isartor",
-    city: "munich",
-    name: "Münchner Feuerzangenbowle at Isartor",
-    type: "market",
-    typeLabel: "Giant Cauldron",
-    coords: [48.1352, 11.5820],
-    dates: "Nov 23, 2026 – Jan 6, 2027",
-    hours: "Daily 11:00 AM – 10:00 PM",
-    alert: "Massive steaming cauldron of flaming rum-soaked sugarcone mulled wine",
-    gmapSearch: "Muenchner+Feuerzangenbowle+Isartor",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Marienplatz+Munich&destination=Isartor+Munich&travelmode=walking"
+    "id": "muc-isartor",
+    "city": "munich",
+    "name": "Münchner Feuerzangenbowle at Isartor",
+    "type": "market",
+    "typeLabel": "Giant Cauldron",
+    "coords": [
+      48.1352,
+      11.582
+    ],
+    "dates": "Nov 23, 2026–Jan 6, 2027",
+    "hours": "Mon–Sat noon–10 PM; Sun noon–9 PM; Dec 24: 11 AM–2 PM",
+    "alert": "Tal 50, Innenhof Isartor. Optional Dec 22 evening; choose this OR Sendlinger Tor.",
+    "gmapSearch": "Muenchner+Feuerzangenbowle+Isartor",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Marienplatz+Munich&destination=Isartor+Munich&travelmode=walking",
+    "sourceUrl": "https://www.muenchner-feuerzangenbowle.de/"
   },
   {
-    id: "muc-sendlinger",
-    city: "munich",
-    name: "Sendlinger Tor Christkindlmarkt",
-    type: "market",
-    typeLabel: "🚨 Closes Dec 22",
-    coords: [48.1340, 11.5676],
-    dates: "Nov 20 – Dec 22, 2026 (Closes Tue Dec 22!)",
-    hours: "Daily 10:30 AM – 9:30 PM",
-    alert: "Historic medieval gate market 10 mins from Ruby Rosi Hotel; closes Dec 22!",
-    gmapSearch: "Sendlinger+Tor+Munich",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Sendlinger+Tor+Munich&travelmode=walking"
-  },
-
-  // NUREMBERG
-  {
-    id: "nue-hbf",
-    city: "nuremberg",
-    name: "Nürnberg Hauptbahnhof (Train Arrival)",
-    type: "transit",
-    typeLabel: "ICE Rail Hub",
-    coords: [49.4456, 11.0829],
-    dates: "Mon, Dec 21 Day Trip",
-    hours: "1 hr 05 min nonstop ICE from München Hbf",
-    alert: "Cross straight north through Frauentor gate into Handwerkerhof!",
-    gmapSearch: "Nuernberg+Hauptbahnhof",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Muenchen+Hauptbahnhof&destination=Nuernberg+Hauptbahnhof&travelmode=transit"
+    "id": "muc-sendlinger",
+    "city": "munich",
+    "name": "Sendlinger Tor Market & ChristkindlTram",
+    "type": "market",
+    "typeLabel": "🚨 Tram Ends Dec 20 / Market Dec 22",
+    "coords": [
+      48.134,
+      11.5676
+    ],
+    "dates": "Market: Nov 20 – Dec 22 | ChristkindlTram: Final Day Sun Dec 20!",
+    "hours": "Market: Daily 10:30 AM–9 PM through Dec 22",
+    "alert": "From munich.travel: ChristkindlTram departs here (final day Sun Dec 20!); Pink Christmas is 5 mins south at Stephansplatz.",
+    "gmapSearch": "Sendlinger+Tor+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Sendlinger+Tor+Munich&travelmode=walking"
   },
   {
-    id: "nue-handwerkerhof",
-    city: "nuremberg",
-    name: "Handwerkerhof Nürnberg (Artisans' Yard)",
-    type: "market",
-    typeLabel: "Stop 1 (10:00 AM)",
-    coords: [49.4472, 11.0812],
-    dates: "Nov 27 – Dec 23, 2026",
-    hours: "Crafts 10:00 AM – 3:30 PM | Taverns open late",
-    alert: "Visit FIRST at 10:00 AM! Artisan craft shops close around 3:30 PM.",
-    gmapSearch: "Handwerkerhof+Nuernberg",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Handwerkerhof+Nuernberg&travelmode=walking"
+    "id": "muc-stachus",
+    "city": "munich",
+    "name": "Karlsplatz (Stachus) Münchner Eiszauber",
+    "type": "market",
+    "typeLabel": "Ice Rink & Chalet",
+    "coords": [
+      48.1391,
+      11.5658
+    ],
+    "dates": "Nov 13, 2026 – Jan 10, 2027",
+    "hours": "Daily 10:30 AM – 10:00 PM",
+    "alert": "Right on your 5-min walk from Ruby Rosi Hotel toward Marienplatz! Huge open-air ice rink & 2-story Eiszauber-Alm lodge.",
+    "gmapSearch": "Karlsplatz+Stachus+Munich",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Karlsplatz+Stachus+Munich&travelmode=walking"
   },
   {
-    id: "nue-hauptmarkt",
-    city: "nuremberg",
-    name: "Nürnberger Christkindlesmarkt (Hauptmarkt)",
-    type: "market",
-    typeLabel: "World Famous",
-    coords: [49.4539, 11.0773],
-    dates: "Nov 27 – Dec 24, 2026",
-    hours: "Daily 10:00 AM – 9:00 PM",
-    alert: "Watch Frauenkirche Männleinlaufen clock at 12:00 Noon sharp & spin Schöner Brunnen brass ring!",
-    gmapSearch: "Nuernberger+Christkindlesmarkt+Hauptmarkt",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Hauptmarkt+Nuernberg&travelmode=walking"
+    "id": "nue-hbf",
+    "city": "nuremberg",
+    "name": "Nürnberg Hauptbahnhof (Train Arrival)",
+    "type": "transit",
+    "typeLabel": "ICE Rail Hub",
+    "coords": [
+      49.4456,
+      11.0829
+    ],
+    "dates": "Mon, Dec 21 Day Trip",
+    "hours": "Faster direct ICE about 1h 05m–1h 20m; check actual booking",
+    "alert": "Allow 20–30 minutes before departure; reserve seats for four.",
+    "gmapSearch": "Nuernberg+Hauptbahnhof",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Muenchen+Hauptbahnhof&destination=Nuernberg+Hauptbahnhof&travelmode=transit"
   },
   {
-    id: "nue-sister",
-    city: "nuremberg",
-    name: "Markt der Partnerstädte (Sister Cities Market)",
-    type: "market",
-    typeLabel: "International Stalls",
-    coords: [49.4552, 11.0777],
-    dates: "Nov 27 – Dec 23, 2026",
-    hours: "Daily 10:00 AM – 9:00 PM",
-    alert: "Located on Rathausplatz right behind Schöner Brunnen (includes Glasgow Scottish booth!)",
-    gmapSearch: "Rathausplatz+Nuernberg",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Rathausplatz+Nuernberg&travelmode=walking"
+    "id": "nue-handwerkerhof",
+    "city": "nuremberg",
+    "name": "Handwerkerhof Nürnberg (Artisans' Yard)",
+    "type": "market",
+    "typeLabel": "Shop on return around 5 PM",
+    "coords": [
+      49.4472,
+      11.0812
+    ],
+    "dates": "Year-round courtyard; shops have holiday exceptions",
+    "hours": "Shops Mon–Sat 11 AM–6 PM; courtyard and taverns differ",
+    "alert": "The 10 AM–3:30 PM hours apply to tourist information, not artisan shops.",
+    "gmapSearch": "Handwerkerhof+Nuernberg",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Handwerkerhof+Nuernberg&travelmode=walking"
   },
   {
-    id: "nue-kinder",
-    city: "nuremberg",
-    name: "Kinderweihnacht (Hans-Sachs-Platz)",
-    type: "market",
-    typeLabel: "Carousel & Stagecoach",
-    coords: [49.4536, 11.0795],
-    dates: "Nov 27 – Dec 24, 2026",
-    hours: "Daily 10:00 AM – 9:00 PM",
-    alert: "2-min walk east of Hauptmarkt; vintage 2-tier carousel & yellow horse-drawn Postkutsche",
-    gmapSearch: "Hans-Sachs-Platz+Nuernberg",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Hans-Sachs-Platz+Nuernberg&travelmode=walking"
+    "id": "nue-hauptmarkt",
+    "city": "nuremberg",
+    "name": "Nürnberger Christkindlesmarkt (Hauptmarkt)",
+    "type": "market",
+    "typeLabel": "World Famous",
+    "coords": [
+      49.4539,
+      11.0773
+    ],
+    "dates": "Nov 27 – Dec 24, 2026",
+    "hours": "Daily 10:00 AM – 9:00 PM | Dec 24 closes 2 PM",
+    "alert": "Watch Frauenkirche Männleinlaufen clock at 12:00 Noon sharp & spin Schöner Brunnen brass ring!",
+    "gmapSearch": "Nuernberger+Christkindlesmarkt+Hauptmarkt",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Nuernberg+Hauptbahnhof&destination=Hauptmarkt+Nuernberg&travelmode=walking"
   },
   {
-    id: "nue-feuer",
-    city: "nuremberg",
-    name: "World's Largest Feuerzangenbowle (Fleischbrücke)",
-    type: "market",
-    typeLabel: "3.4m Giant Cauldron",
-    coords: [49.4528, 11.0764],
-    dates: "Nov 27 – Dec 31, 2026",
-    hours: "Daily 10:00 AM – 9:30 PM",
-    alert: "Right on the Pegnitz River bridge—perfect final warm drink before walking back to Hbf!",
-    gmapSearch: "Fleischbruecke+Nuernberg",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Fleischbruecke+Nuernberg&travelmode=walking"
-  },
-
-  // PRAGUE
-  {
-    id: "prg-hotel",
-    city: "prague",
-    name: "Almanac X Alcron Prague",
-    type: "hotel",
-    typeLabel: "5★ Art Deco Base",
-    coords: [50.0803, 14.4263],
-    dates: "Check-in Wed Dec 23 – Check-out Sat Dec 26",
-    hours: "Štěpánská 40, 110 00 Nové Město (Steps from Wenceslas Square)",
-    alert: "Walkable to every major square when trams reduce frequency on Christmas Eve!",
-    gmapSearch: "Almanac+X+Alcron+Prague",
-    dirFromHotel: "https://www.google.com/maps/search/?api=1&query=Almanac+X+Alcron+Prague"
+    "id": "nue-sister",
+    "city": "nuremberg",
+    "name": "Markt der Partnerstädte (Sister Cities Market)",
+    "type": "market",
+    "typeLabel": "International Stalls",
+    "coords": [
+      49.4552,
+      11.0777
+    ],
+    "dates": "Nov 27 – Dec 23, 2026",
+    "hours": "Daily 10:00 AM – 9:00 PM",
+    "alert": "Located on Rathausplatz right behind Schöner Brunnen (includes Glasgow Scottish booth!)",
+    "gmapSearch": "Rathausplatz+Nuernberg",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Rathausplatz+Nuernberg&travelmode=walking"
   },
   {
-    id: "prg-oldtown",
-    city: "prague",
-    name: "Old Town Square Market (Staroměstské náměstí)",
-    type: "market",
-    typeLabel: "Open All Holidays",
-    coords: [50.0875, 14.4213],
-    dates: "Nov 28, 2026 – Jan 6, 2027",
-    hours: "Daily 10:00 AM – 10:00 PM (Food huts until midnight)",
-    alert: "Tree light show every hour at :30 (4:30–9:30 PM) + Live Czech Christmas Mass Dec 24 at 9:00 PM!",
-    gmapSearch: "Old+Town+Square+Christmas+Market+Prague",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Old+Town+Square+Prague&travelmode=walking"
+    "id": "nue-kinder",
+    "city": "nuremberg",
+    "name": "Kinderweihnacht (Hans-Sachs-Platz)",
+    "type": "market",
+    "typeLabel": "Carousel",
+    "coords": [
+      49.4536,
+      11.0795
+    ],
+    "dates": "Nov 27 – Dec 24, 2026",
+    "hours": "Usually 10 AM–9 PM; Dec 24 shortened hours—check operator",
+    "alert": "Hans-Sachs-Platz east of Hauptmarkt. Post coach has its own route and schedule.",
+    "gmapSearch": "Hans-Sachs-Platz+Nuernberg",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Hans-Sachs-Platz+Nuernberg&travelmode=walking"
   },
   {
-    id: "prg-wenceslas",
-    city: "prague",
-    name: "Wenceslas Square Market (Václavské náměstí)",
-    type: "market",
-    typeLabel: "Steps from Hotel",
-    coords: [50.0819, 14.4266],
-    dates: "Nov 28, 2026 – Jan 6, 2027",
-    hours: "Daily 10:00 AM – 10:00 PM (Food huts until midnight)",
-    alert: "2-min walk from Almanac X Alcron; blacksmith demonstrations & late-night Klobása",
-    gmapSearch: "Wenceslas+Square+Prague",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Wenceslas+Square+Prague&travelmode=walking"
+    "id": "nue-feuer",
+    "city": "nuremberg",
+    "name": "World's Largest Feuerzangenbowle (Fleischbrücke)",
+    "type": "market",
+    "typeLabel": "3.4m Giant Cauldron",
+    "coords": [
+      49.4528,
+      11.0764
+    ],
+    "dates": "Nov 27 – Dec 31, 2026",
+    "hours": "Mon Dec 21: 11 AM–9 PM; other days/holidays differ",
+    "alert": "Zwischen den Fleischbänken, near Fleischbrücke. Optional on the return to Handwerkerhof and Hbf.",
+    "gmapSearch": "Fleischbruecke+Nuernberg",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Hauptmarkt+Nuernberg&destination=Fleischbruecke+Nuernberg&travelmode=walking",
+    "sourceUrl": "https://www.nuernberger-feuerzangenbowle.de/"
   },
   {
-    id: "prg-miru",
-    city: "prague",
-    name: "Náměstí Míru (Peace Square Local Market)",
-    type: "market",
-    typeLabel: "🚨 Closes Dec 24",
-    coords: [50.0755, 14.4370],
-    dates: "Nov 20 – Dec 24, 2026 (Closes Thu Dec 24!)",
-    hours: "Daily 10:00 AM – 8:00 PM",
-    alert: "Prague locals' favorite market in Vinohrady (25–30% cheaper); visit Wed Dec 23 or Thu morning Dec 24!",
-    gmapSearch: "Namesti+Miru+Prague",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Miru+Prague&travelmode=walking"
+    "id": "prg-hotel",
+    "city": "prague",
+    "name": "Almanac X Alcron Prague",
+    "type": "hotel",
+    "typeLabel": "5★ Art Deco Base",
+    "coords": [
+      50.0803,
+      14.4263
+    ],
+    "dates": "Check-in Wed Dec 23 – Check-out Sat Dec 26",
+    "hours": "Štěpánská 40, 110 00 Nové Město (Steps from Wenceslas Square)",
+    "alert": "Allow 15–20 minutes to Old Town Square and 25–35 minutes to Old Town Bridge Tower.",
+    "gmapSearch": "Almanac+X+Alcron+Prague",
+    "dirFromHotel": "https://www.google.com/maps/search/?api=1&query=Almanac+X+Alcron+Prague"
   },
   {
-    id: "prg-castle",
-    city: "prague",
-    name: "Prague Castle Market (St. George's Square)",
-    type: "market",
-    typeLabel: "Open Dec 24 & 25",
-    coords: [50.0911, 14.4016],
-    dates: "Late Nov 2026 – Jan 2, 2027",
-    hours: "Dec 23: 9 AM–6 PM | Dec 24: 10 AM–4 PM | Dec 25: 10 AM–6 PM",
-    alert: "Take Tram 22 up to Pražský hrad, then walk downhill through Malá Strana & Charles Bridge!",
-    gmapSearch: "St.+George's+Square+Prague+Castle",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=St.+George's+Square+Prague+Castle&travelmode=transit"
+    "id": "prg-oldtown",
+    "city": "prague",
+    "name": "Old Town Square Market (Staroměstské náměstí)",
+    "type": "market",
+    "typeLabel": "Open All Holidays",
+    "coords": [
+      50.0875,
+      14.4213
+    ],
+    "dates": "Nov 28, 2026 – Jan 6, 2027",
+    "hours": "Operator standard 10 AM–10 PM; holiday exceptions to reconfirm",
+    "alert": "Tree show and Christmas Eve stage programme not confirmed. Reserve holiday meals.",
+    "gmapSearch": "Old+Town+Square+Christmas+Market+Prague",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Old+Town+Square+Prague&travelmode=walking"
   },
   {
-    id: "prg-bridge",
-    city: "prague",
-    name: "Charles Bridge & Kampa Island Market (Na Kampě)",
-    type: "landmark",
-    typeLabel: "🚨 Dec 23 Lamp Lighter",
-    coords: [50.0865, 14.4114],
-    dates: "Gas Lamplighter Final Day: Wed, Dec 23 at 4:05 PM",
-    hours: "Kampa Market: Daily 10:00 AM – 8:00 PM",
-    alert: "CRITICAL: Wed Dec 23 (4:05–4:15 PM) is the FINAL DAY the historic gas-lamp lighter walks Charles Bridge!",
-    gmapSearch: "Charles+Bridge+Prague",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Charles+Bridge+Prague&travelmode=walking"
-  },
-
-  // VIENNA
-  {
-    id: "vie-hotel",
-    city: "vienna",
-    name: "Novotel Wien Hauptbahnhof",
-    type: "hotel",
-    typeLabel: "Hotel Base",
-    coords: [48.1846, 16.3782],
-    dates: "Check-in Sat Dec 26 – Check-out Mon Dec 28",
-    hours: "Canettistraße 6, 1100 Wien (Right outside Wien Hbf exit)",
-    alert: "Drop bags in 3 mins on Sat Dec 26 and take U1 Metro 3 stops (6 mins) to Stephansplatz!",
-    gmapSearch: "Novotel+Wien+Hauptbahnhof",
-    dirFromHotel: "https://www.google.com/maps/search/?api=1&query=Novotel+Wien+Hauptbahnhof"
+    "id": "prg-wenceslas",
+    "city": "prague",
+    "name": "Wenceslas Square Market (Václavské náměstí)",
+    "type": "market",
+    "typeLabel": "Steps from Hotel",
+    "coords": [
+      50.0819,
+      14.4266
+    ],
+    "dates": "Nov 28, 2026 – Jan 6, 2027",
+    "hours": "Operator standard 10 AM–10 PM; holiday exceptions to reconfirm",
+    "alert": "Short walk from hotel. Check Christmas Eve service and buy essentials Dec 23.",
+    "gmapSearch": "Wenceslas+Square+Prague",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Wenceslas+Square+Prague&travelmode=walking"
   },
   {
-    id: "vie-stephansplatz",
-    city: "vienna",
-    name: "Stephansplatz Christmas Market (St. Stephen's Cathedral)",
-    type: "market",
-    typeLabel: "🚨 Closes Sat Dec 26 (7 PM)",
-    coords: [48.2085, 16.3732],
-    dates: "Nov 6 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
-    hours: "Sat Dec 26 Final Day: 11:00 AM – 7:00 PM (CLOSED Sun Dec 27!)",
-    alert: "STOP #1 on Sat Dec 26! Closes permanently at 7:00 PM on Saturday, Dec 26.",
-    gmapSearch: "Stephansplatz+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Stephansplatz+Vienna&travelmode=transit"
+    "id": "prg-miru",
+    "city": "prague",
+    "name": "Náměstí Míru & Tylovo náměstí (Vinohrady Local Markets)",
+    "type": "market",
+    "typeLabel": "🚨 Closes Dec 24",
+    "coords": [
+      50.0755,
+      14.437
+    ],
+    "dates": "Nov 20 – Dec 24, 2026 (Closes Thu Dec 24!)",
+    "hours": "Daily 10:00 AM – 8:00 PM",
+    "alert": "Visit Dec 23 evening! Pair Náměstí Míru with intimate Tylovo náměstí just 3 mins away; confirm Dec 24 holiday hours.",
+    "gmapSearch": "Namesti+Miru+Prague",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Miru+Prague&travelmode=walking"
   },
   {
-    id: "vie-mariatheresien",
-    city: "vienna",
-    name: "Weihnachtsdorf Maria-Theresien-Platz",
-    type: "market",
-    typeLabel: "🚨 Closes Sat Dec 26 (7 PM)",
-    coords: [48.2045, 16.3607],
-    dates: "Nov 20 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
-    hours: "Sat Dec 26 Final Day: 11:00 AM – 7:00 PM (CLOSED Sun Dec 27!)",
-    alert: "STOP #2 on Sat Dec 26! Framed by twin Imperial Museums; closes permanently at 7:00 PM Dec 26.",
-    gmapSearch: "Maria-Theresien-Platz+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Stephansplatz+Vienna&destination=Maria-Theresien-Platz+Vienna&travelmode=walking"
+    "id": "prg-republiky",
+    "city": "prague",
+    "name": "Náměstí Republiky (Republic Square Market)",
+    "type": "market",
+    "typeLabel": "🚨 Closes Dec 24",
+    "coords": [
+      50.088,
+      14.4281
+    ],
+    "dates": "Nov 25 – Dec 24, 2026",
+    "hours": "Daily 10:00 AM – 8:00 PM (Closes Dec 24)",
+    "alert": "From Best Prague Guide: Next to Palladium & Municipal House; great for Czech cauldron soups (zelňačka/česnečka) & grilled klobása!",
+    "gmapSearch": "Namesti+Republiky+Prague",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Republiky+Prague&travelmode=walking"
   },
   {
-    id: "vie-rathaus",
-    city: "vienna",
-    name: "Wiener Christkindlmarkt (Rathausplatz)",
-    type: "market",
-    typeLabel: "🚨 Closes Sat Dec 26 (10 PM)",
-    coords: [48.2108, 16.3573],
-    dates: "Nov 13 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
-    hours: "Sat Dec 26 Final Day: 10:00 AM – 10:00 PM (Stalls CLOSED Dec 27; Ice Dream stays open)",
-    alert: "STOP #3 on Sat Dec 26! Spend Saturday evening until 10:00 PM here (Tree of Hearts & 97 stalls close tonight!).",
-    gmapSearch: "Wiener+Christkindlmarkt+Rathausplatz+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Maria-Theresien-Platz+Vienna&destination=Rathausplatz+Vienna&travelmode=walking"
+    "id": "prg-castle",
+    "city": "prague",
+    "name": "Prague Castle — optional Christmas Stroll",
+    "type": "landmark",
+    "typeLabel": "Not a confirmed market",
+    "coords": [
+      50.0911,
+      14.4016
+    ],
+    "dates": "Optional Dec 25; official Christmas Stroll closed Dec 24",
+    "hours": "Stroll lists 10 AM–6 PM around Dec 25; confirm interiors separately",
+    "alert": "Use Metro A to Malostranská and tram 22 uphill; no Castle market is promised.",
+    "gmapSearch": "St.+George's+Square+Prague+Castle",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=St.+George's+Square+Prague+Castle&travelmode=transit"
   },
   {
-    id: "vie-belvedere",
-    city: "vienna",
-    name: "Belvedere Palace K&K Market",
-    type: "market",
-    typeLabel: "✅ Open Sun Dec 27",
-    coords: [48.1915, 16.3809],
-    dates: "Nov 20 – Dec 31, 2026",
-    hours: "Dec 26 & Sun Dec 27 Holiday Hours: 11:00 AM – 5:00 PM",
-    alert: "STOP #1 on Sun Dec 27 (11:00 AM)! Only a 10-minute walk from Novotel Wien Hbf; note 5:00 PM closing!",
-    gmapSearch: "Upper+Belvedere+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Upper+Belvedere+Vienna&travelmode=walking"
+    "id": "prg-bridge",
+    "city": "prague",
+    "name": "Charles Bridge & Kampa outdoor stroll",
+    "type": "landmark",
+    "typeLabel": "Dusk walk: reconfirm",
+    "coords": [
+      50.0865,
+      14.4138
+    ],
+    "dates": "Dec 23 customary final Advent lamplighter walk; 2026 arrangements to confirm",
+    "hours": "Arrive Old Town Bridge Tower by 3:45 PM only if arrival permits",
+    "alert": "Allow 25–35 minutes from hotel. Lamplighter time and Kampa stalls are not guaranteed.",
+    "gmapSearch": "Charles+Bridge+Prague",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Charles+Bridge+Prague&travelmode=walking"
   },
   {
-    id: "vie-schoenbrunn",
-    city: "vienna",
-    name: "Schönbrunn Palace Christmas & New Year Market",
-    type: "market",
-    typeLabel: "✅ Open Sun Dec 27",
-    coords: [48.1858, 16.3128],
-    dates: "Nov 6, 2026 – Jan 6, 2027",
-    hours: "Dec 25 – Jan 6: Daily 10:00 AM – 7:00 PM",
-    alert: "STOP #2 on Sun Dec 27 (2:30–6:30 PM)! Walk up to the Gloriette before 3:45 PM sunset.",
-    gmapSearch: "Schoenbrunn+Palace+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Upper+Belvedere+Vienna&destination=Schoenbrunn+Palace+Vienna&travelmode=transit"
+    "id": "vie-hotel",
+    "city": "vienna",
+    "name": "Novotel Wien Hauptbahnhof",
+    "type": "hotel",
+    "typeLabel": "Hotel Base",
+    "coords": [
+      48.1846,
+      16.3782
+    ],
+    "dates": "Check-in Sat Dec 26 – Check-out Mon Dec 28",
+    "hours": "Canettistraße 6, 1100 Wien (Right outside Wien Hbf exit)",
+    "alert": "Allow 45–60 minutes for station exit, bag drop and U1 access. Rooms may not be ready.",
+    "gmapSearch": "Novotel+Wien+Hauptbahnhof",
+    "dirFromHotel": "https://www.google.com/maps/search/?api=1&query=Novotel+Wien+Hauptbahnhof"
   },
   {
-    id: "vie-prater",
-    city: "vienna",
-    name: "Wintermarkt am Riesenradplatz (Prater)",
-    type: "market",
-    typeLabel: "✅ Open Sun Dec 27 (10 PM)",
-    coords: [48.2167, 16.3959],
-    dates: "Nov 20, 2026 – Jan 6, 2027",
-    hours: "Sun Dec 27: 11:00 AM – 10:00 PM (Live Music at 7:00 PM)",
-    alert: "STOP #3 on Sun Dec 27 (7:00–10:00 PM)! Under the 1897 Giant Ferris Wheel with live music.",
-    gmapSearch: "Riesenradplatz+Prater+Vienna",
-    dirFromHotel: "https://www.google.com/maps/dir/?api=1&origin=Schoenbrunn+Palace+Vienna&destination=Riesenradplatz+Vienna&travelmode=transit"
+    "id": "vie-stephansplatz",
+    "city": "vienna",
+    "name": "Stephansplatz Christmas Market (St. Stephen's Cathedral)",
+    "type": "market",
+    "typeLabel": "🚨 Closes Sat Dec 26 (7 PM)",
+    "coords": [
+      48.2085,
+      16.3732
+    ],
+    "dates": "Nov 6 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
+    "hours": "Sat Dec 26 Final Day: 11:00 AM – 7:00 PM (CLOSED Sun Dec 27!)",
+    "alert": "SECOND on Dec 26, after Maria-Theresien-Platz. Published final close 7 PM.",
+    "gmapSearch": "Stephansplatz+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Maria-Theresien-Platz+Vienna&destination=Stephansplatz+Vienna&travelmode=walking"
+  },
+  {
+    "id": "vie-mariatheresien",
+    "city": "vienna",
+    "name": "Weihnachtsdorf Maria-Theresien-Platz",
+    "type": "market",
+    "typeLabel": "FIRST Dec 26: plan before 4 PM",
+    "coords": [
+      48.2045,
+      16.3607
+    ],
+    "dates": "Nov 20 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
+    "hours": "Official Dec 26 listings conflict: 11 AM–4 PM versus 11 AM–7 PM",
+    "alert": "Visit FIRST around 2–3 PM; use 4 PM as conservative close and reconfirm.",
+    "gmapSearch": "Maria-Theresien-Platz+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Maria-Theresien-Platz+Vienna&travelmode=transit"
+  },
+  {
+    "id": "vie-rathaus",
+    "city": "vienna",
+    "name": "Wiener Christkindlmarkt (Rathausplatz)",
+    "type": "market",
+    "typeLabel": "🚨 Closes Sat Dec 26 (10 PM)",
+    "coords": [
+      48.2108,
+      16.3573
+    ],
+    "dates": "Nov 13 – Dec 26, 2026 (FINAL DAY SAT DEC 26!)",
+    "hours": "Sat Dec 26 Final Day: 10:00 AM – 10:00 PM (Stalls CLOSED Dec 27; Ice Dream stays open)",
+    "alert": "Final market evening Dec 26; prioritize if train is late. Allow 25–35 minutes from cathedral.",
+    "gmapSearch": "Wiener+Christkindlmarkt+Rathausplatz+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Stephansplatz+Vienna&destination=Rathausplatz+Vienna&travelmode=walking"
+  },
+  {
+    "id": "vie-belvedere",
+    "city": "vienna",
+    "name": "Belvedere Palace K&K Market",
+    "type": "market",
+    "typeLabel": "✅ Open Sun Dec 27",
+    "coords": [
+      48.1915,
+      16.3809
+    ],
+    "dates": "Nov 20 – Dec 31, 2026",
+    "hours": "Published Sunday Dec 27 market: 10 AM–9 PM",
+    "alert": "Dec 27 morning; allow 15–20 minutes from hotel. Gallery needs a separate timed ticket.",
+    "gmapSearch": "Upper+Belvedere+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Novotel+Wien+Hauptbahnhof&destination=Upper+Belvedere+Vienna&travelmode=walking"
+  },
+  {
+    "id": "vie-schoenbrunn",
+    "city": "vienna",
+    "name": "Schönbrunn Palace Christmas & New Year Market",
+    "type": "market",
+    "typeLabel": "✅ Open Sun Dec 27",
+    "coords": [
+      48.1858,
+      16.3128
+    ],
+    "dates": "Nov 6, 2026 – Jan 6, 2027",
+    "hours": "Dec 25 – Jan 6: Daily 10:00 AM – 7:00 PM",
+    "alert": "Dec 27 afternoon. Park closes 5:30 PM; Gloriette rooftop terrace is closed in winter.",
+    "gmapSearch": "Schoenbrunn+Palace+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Upper+Belvedere+Vienna&destination=Schoenbrunn+Palace+Vienna&travelmode=transit"
+  },
+  {
+    "id": "vie-prater",
+    "city": "vienna",
+    "name": "Wintermarkt am Riesenradplatz (Prater)",
+    "type": "market",
+    "typeLabel": "✅ Open Sun Dec 27 (10 PM)",
+    "coords": [
+      48.2167,
+      16.3959
+    ],
+    "dates": "Nov 20, 2026 – Jan 6, 2027",
+    "hours": "Published Sunday market 11 AM–10 PM; check music and Ferris wheel hours separately",
+    "alert": "Optional Dec 27 evening. Allow 45–60 minutes from Schönbrunn; skip if tired.",
+    "gmapSearch": "Riesenradplatz+Prater+Vienna",
+    "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Schoenbrunn+Palace+Vienna&destination=Riesenradplatz+Vienna&travelmode=transit"
   }
 ];
 
 const CHECKLIST_ITEMS = [
-  { id: "chk-1", city: "Munich", title: "Rahmfleck at Marienplatz", desc: "Bavarian wood-fired flatbread topped with sour cream, bacon & chives." },
-  { id: "chk-2", city: "Munich", title: "5:30 PM Rathaus Balcony Music", desc: "Stand in Marienplatz (Sun Dec 20 or Tue Dec 22) for live Alpine brass & choir music." },
-  { id: "chk-3", city: "Munich", title: "Residenz Village Before Dec 22 Close", desc: "Visit Kaiserhof der Residenz on Tuesday Dec 22 (its final day of 2026!)." },
-  { id: "chk-4", city: "Munich", title: "Drachenblut at Medieval Market", desc: "Hot spiced cherry-and-honey mead in a clay goblet at Wittelsbacherplatz." },
-  { id: "chk-5", city: "Nuremberg", title: "Drei im Weggla", desc: "Three marjoram-seasoned Nürnberger sausages in a crusty roll with mustard." },
-  { id: "chk-6", city: "Nuremberg", title: "Original Elisenlebkuchen", desc: "Flourless nut-rich gingerbread baked on thin wafers (Wicklein or Lebkuchen-Schmidt)." },
-  { id: "chk-7", city: "Nuremberg", title: "Heidelbeer-Glühwein", desc: "Nuremberg's signature blueberry mulled wine at Hauptmarkt." },
-  { id: "chk-8", city: "Nuremberg", title: "Spin the Schöner Brunnen Brass Ring", desc: "Spin the seamless brass ring 3 times for luck + watch 12:00 PM Männleinlaufen clock." },
-  { id: "chk-9", city: "Nuremberg", title: "Zwetschgenmännla Souvenir", desc: "Traditional handmade chimney-sweep or figure crafted from dried prunes & walnuts." },
-  { id: "chk-10", city: "Prague", title: "Charles Bridge Gas Lamplighter (Dec 23)", desc: "Catch the final performance of the season on Wed, Dec 23 around 4:05 PM!" },
-  { id: "chk-11", city: "Prague", title: "Svařák & Hot Medovina", desc: "Czech citrus-spiced mulled wine and hot honey mead on Old Town Square." },
-  { id: "chk-12", city: "Prague", title: "Bramboráky & Charcoal-Spit Trdelník", desc: "Crispy garlic-marjoram potato pancakes & piping-hot cinnamon walnut chimney cake." },
-  { id: "chk-13", city: "Prague", title: "Hourly Tree Light Show (:30)", desc: "Watch the choreographed Old Town Square tree light show from the viewing bridge." },
-  { id: "chk-14", city: "Vienna", title: "Sat Dec 26 Triple Market Blitz", desc: "Hit Stephansplatz & Maria-Theresien-Platz before 7 PM, then Rathausplatz until 10 PM!" },
-  { id: "chk-15", city: "Vienna", title: "Käsekrainer & Maroni", desc: "Cheese-stuffed smoked sausage & hot roasted chestnuts in a two-pocket paper cone." },
-  { id: "chk-16", city: "Vienna", title: "Kaiserschmarren at Belvedere / Schönbrunn", desc: "Fluffy shredded caramelized emperor's pancake with warm plum compote on Sun Dec 27." }
+  {
+    "id": "chk-1",
+    "city": "Munich",
+    "title": "Rahmfleck at Marienplatz",
+    "desc": "Bavarian wood-fired flatbread topped with sour cream, bacon & chives."
+  },
+  {
+    "id": "chk-2",
+    "city": "Munich",
+    "title": "5:15 PM Rathaus Balcony Music",
+    "desc": "Arrive in Marienplatz by 5 PM on Sun Dec 20 or Tue Dec 22; check the programme."
+  },
+  {
+    "id": "chk-3",
+    "city": "Munich",
+    "title": "Residenz Village Before Dec 22 Close",
+    "desc": "Visit Tuesday early afternoon; final Dec 22 close is 8 PM."
+  },
+  {
+    "id": "chk-4",
+    "city": "Munich",
+    "title": "Drachenblut at Medieval Market",
+    "desc": "Hot spiced cherry-and-honey mead in a clay goblet at Wittelsbacherplatz."
+  },
+  {
+    "id": "chk-5",
+    "city": "Nuremberg",
+    "title": "Drei im Weggla",
+    "desc": "Three marjoram-seasoned Nürnberger sausages in a crusty roll with mustard."
+  },
+  {
+    "id": "chk-6",
+    "city": "Nuremberg",
+    "title": "Original Elisenlebkuchen",
+    "desc": "Nut-rich gingerbread; check flour, wafer and allergen ingredients before ordering."
+  },
+  {
+    "id": "chk-7",
+    "city": "Nuremberg",
+    "title": "Heidelbeer-Glühwein",
+    "desc": "Nuremberg's signature blueberry mulled wine at Hauptmarkt."
+  },
+  {
+    "id": "chk-8",
+    "city": "Nuremberg",
+    "title": "Spin the Schöner Brunnen Brass Ring",
+    "desc": "Spin the seamless brass ring 3 times for luck + watch 12:00 PM Männleinlaufen clock."
+  },
+  {
+    "id": "chk-9",
+    "city": "Nuremberg",
+    "title": "Zwetschgenmännla Souvenir",
+    "desc": "Traditional handmade chimney-sweep or figure crafted from dried prunes & walnuts."
+  },
+  {
+    "id": "chk-10",
+    "city": "Prague",
+    "title": "Charles Bridge at Dusk",
+    "desc": "Dec 23 lamplighter is an optional bonus: reconfirm timing and skip if arrival is delayed."
+  },
+  {
+    "id": "chk-11",
+    "city": "Prague",
+    "title": "Svařák & Hot Medovina",
+    "desc": "Czech citrus-spiced mulled wine and hot honey mead on Old Town Square."
+  },
+  {
+    "id": "chk-12",
+    "city": "Prague",
+    "title": "Bramboráky & Charcoal-Spit Trdelník",
+    "desc": "Crispy garlic-marjoram potato pancakes & piping-hot cinnamon walnut chimney cake."
+  },
+  {
+    "id": "chk-13",
+    "city": "Prague",
+    "title": "Old Town Square Christmas Tree",
+    "desc": "Enjoy the decorations; add a light show only if the 2026 programme confirms it."
+  },
+  {
+    "id": "chk-14",
+    "city": "Vienna",
+    "title": "Dec 26 Vienna Market Evening",
+    "desc": "Maria-Theresien-Platz before conservative 4 PM cutoff, then cathedral and Rathaus if time allows."
+  },
+  {
+    "id": "chk-15",
+    "city": "Vienna",
+    "title": "Käsekrainer & Maroni",
+    "desc": "Cheese-stuffed smoked sausage & hot roasted chestnuts in a two-pocket paper cone."
+  },
+  {
+    "id": "chk-16",
+    "city": "Vienna",
+    "title": "Kaiserschmarren at Belvedere / Schönbrunn",
+    "desc": "Fluffy shredded caramelized emperor's pancake with warm plum compote on Sun Dec 27."
+  },
+  {
+    "id": "chk-17",
+    "city": "Munich",
+    "title": "ChristkindlTram (Dec 20 Final Day) & Stachus Eiszauber",
+    "desc": "Spot Munich's festive tram at Sendlinger Tor (ends Sun Dec 20) & pass the Stachus open-air ice rink."
+  },
+  {
+    "id": "chk-18",
+    "city": "Prague",
+    "title": "Vánočka Bread & Czech Cauldron Soup",
+    "desc": "Try braided raisin-almond Vánočka & hot garlic (česnečka) or sauerkraut (zelňačka) soup."
+  },
+  {
+    "id": "chk-19",
+    "city": "Vienna",
+    "title": "Red Boot Mug & Rathaus Heart-Handle Mug",
+    "desc": "Spot the iconic red boot mugs (Stephansplatz/Belvedere) & heart-handle mugs (Rathausplatz)."
+  },
+  {
+    "id": "chk-20",
+    "city": "Vienna",
+    "title": "Selchfleischknödel, Bosna, Schaumrollen & Vanillekipferl",
+    "desc": "Smoked-meat potato dumplings, spicy Bosna sausage roll, meringue pastry horns & vanilla crescents."
+  }
 ];
 
 let map;
@@ -519,7 +843,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 1. Countdown Timer to Dec 20, 2026
 function initCountdown() {
-  const target = new Date("2026-12-20T08:00:00").getTime();
+  const target = new Date("2026-12-20T00:00:00+01:00").getTime();
   const update = () => {
     const now = Date.now();
     const diff = Math.max(0, target - now);
@@ -677,6 +1001,7 @@ function updateMapMarkers(city) {
         <div style="font-size:14px;font-weight:700;margin-bottom:4px;color:#102820;">${poi.name}</div>
         <div style="font-size:12px;color:#57534e;margin-bottom:4px;"><strong>Hours:</strong> ${poi.hours}</div>
         <div style="font-size:12px;color:#9b2226;font-weight:600;margin-bottom:8px;">${poi.alert}</div>
+        ${poi.sourceUrl ? `<p><a href="${poi.sourceUrl}" target="_blank" rel="noopener">Official venue hours ↗</a></p>` : ""}
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
           <a href="${poi.dirFromHotel}" target="_blank" rel="noopener" style="background:#9b2226;color:#fff;padding:4px 8px;border-radius:4px;text-decoration:none;font-size:11px;font-weight:600;">🚶 Directions</a>
           <a href="https://www.google.com/maps/search/?api=1&query=${poi.gmapSearch}" target="_blank" rel="noopener" style="background:#1b4332;color:#fff;padding:4px 8px;border-radius:4px;text-decoration:none;font-size:11px;font-weight:600;">📍 Open in Google Maps</a>
@@ -729,6 +1054,7 @@ function renderCitySidebar(city) {
           </div>
           <div class="poi-meta">${poi.hours}</div>
           <div class="poi-meta" style="color:#9b2226;font-weight:600;">${poi.alert}</div>
+          ${poi.sourceUrl ? `<div class="poi-meta"><a href="${poi.sourceUrl}" target="_blank" rel="noopener">Official venue hours ↗</a></div>` : ""}
           <div class="poi-actions">
             <button type="button" class="btn-map" onclick="focusPoi('${poi.id}')">🎯 Focus on Map</button>
             <a href="${poi.dirFromHotel}" target="_blank" rel="noopener" class="btn-directions">🚶 Google Maps Directions</a>
@@ -835,13 +1161,14 @@ function initPfandCalculator() {
     const pfandFloat = 4 * 4.5; // €4.50 deposit per mug needed in pocket for a round
     const keptMugCost = keepMugs * 4.5;
     const foodCost = snacks * 4 * 6.5; // ~€6.50 per person per snack stop
-    const totalDaily = Math.round(drinkCost + foodCost + keptMugCost);
-    const upfrontPocketCash = Math.round(totalDaily + pfandFloat);
+    const totalDaily = drinkCost + foodCost + keptMugCost;
+    const finalRefund = Math.max(0, pfandFloat - keptMugCost);
+    const upfrontPocketCash = Math.ceil(drinkCost + foodCost + pfandFloat);
 
     document.getElementById("res-drinks").textContent = `€${drinkCost.toFixed(0)} EUR`;
-    document.getElementById("res-pfand").textContent = `€${pfandFloat.toFixed(0)} EUR (refundable float)`;
+    document.getElementById("res-pfand").textContent = `€${pfandFloat.toFixed(0)} EUR upfront (final refund €${finalRefund.toFixed(2)})`;
     document.getElementById("res-food").textContent = `€${foodCost.toFixed(0)} EUR`;
-    document.getElementById("res-total").textContent = `€${upfrontPocketCash} EUR in pocket (Net spent: €${totalDaily})`;
+    document.getElementById("res-total").textContent = `€${upfrontPocketCash} EUR in pocket (Net spent: €${totalDaily.toFixed(2)})`;
   };
 
   roundsInput.addEventListener("input", updateCalc);
