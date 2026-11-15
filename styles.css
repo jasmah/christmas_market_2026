@@ -1099,6 +1099,126 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 /* Footer */
+.planning-note {
+  margin: 1.4rem 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--gold-light);
+  border-left: 4px solid var(--forest-main);
+  border-radius: var(--radius-sm);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.planning-note p + p {
+  margin-top: 0.8rem;
+}
+
+.market-card-top > p:last-child,
+.alert-card p + p {
+  margin-top: 0.8rem;
+}
+
+.logistics-details details {
+  margin-bottom: 0.9rem;
+  padding: 1rem 1.2rem;
+  background: var(--gold-light);
+  border-radius: var(--radius-sm);
+  line-height: 1.65;
+}
+
+.logistics-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--forest-dark);
+}
+
+.logistics-details summary:focus-visible {
+  outline: 2px solid var(--forest-main);
+  outline-offset: 5px;
+}
+
+.logistics-details p {
+  margin-top: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.logistics-table {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+/* Curated Location & Food Photos */
+.city-banner-media {
+  width: 230px;
+  height: 145px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--border-warm);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  background: var(--forest-dark);
+}
+
+.city-banner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.food-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.food-visual-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-warm);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.food-visual-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  background: var(--bg-elevated);
+}
+
+.food-visual-caption {
+  padding: 0.6rem 0.75rem;
+}
+
+.food-visual-caption span {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--crimson-main);
+  letter-spacing: 0.04em;
+}
+
+.food-visual-caption strong {
+  font-size: 0.86rem;
+  color: var(--forest-dark);
+  display: block;
+  line-height: 1.25;
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 640px) {
+  .city-banner-media {
+    width: 100%;
+    height: 170px;
+  }
+}
+
 .footer {
   background: var(--forest-dark);
   color: #d6d3d1;
