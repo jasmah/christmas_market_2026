@@ -359,8 +359,9 @@ const POIS = [
       11.5676
     ],
     "dates": "Market: Nov 20 – Dec 22 | ChristkindlTram: Final Day Sun Dec 20!",
-    "hours": "Market: Daily 10:30 AM–9 PM through Dec 22",
-    "alert": "From munich.travel: ChristkindlTram departs here (final day Sun Dec 20!); Pink Christmas is 5 mins south at Stephansplatz.",
+    "hours": "Market: 10:30 AM–9 PM through Dec 22; ChristkindlTram has separate Dec 20 booking slots",
+    "alert": "Tram boards Brunnenschleife special stop; 30-minute ride, separate tickets. Pink Christmas closes Dec 20, so skip it Dec 22.",
+    "sourceUrl": "https://www.mvg.de/news/christkindltram.html",
     "gmapSearch": "Sendlinger+Tor+Munich",
     "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Ruby+Rosi+Hotel+Munich&destination=Sendlinger+Tor+Munich&travelmode=walking"
   },
@@ -528,7 +529,7 @@ const POIS = [
   {
     "id": "prg-miru",
     "city": "prague",
-    "name": "Náměstí Míru & Tylovo náměstí (Vinohrady Local Markets)",
+    "name": "Náměstí Míru (Vinohrady Local Market)",
     "type": "market",
     "typeLabel": "🚨 Closes Dec 24",
     "coords": [
@@ -536,8 +537,9 @@ const POIS = [
       14.437
     ],
     "dates": "Nov 20 – Dec 24, 2026 (Closes Thu Dec 24!)",
-    "hours": "Daily 10:00 AM – 8:00 PM",
-    "alert": "Visit Dec 23 evening! Pair Náměstí Míru with intimate Tylovo náměstí just 3 mins away; confirm Dec 24 holiday hours.",
+    "hours": "Tourism lists 10 AM–8 PM; operator generic hours differ. Confirm holiday exceptions.",
+    "alert": "Dec 23 priority. Optional nearby Tylovo runs Nov 26–Dec 24, with separate hours; allow 5–10 minutes between squares.",
+    "sourceUrl": "https://www.vanocnitrhy.cz/prodejni-rad/",
     "gmapSearch": "Namesti+Miru+Prague",
     "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Miru+Prague&travelmode=walking"
   },
@@ -552,8 +554,9 @@ const POIS = [
       14.4281
     ],
     "dates": "Nov 25 – Dec 24, 2026",
-    "hours": "Daily 10:00 AM – 8:00 PM (Closes Dec 24)",
-    "alert": "From Best Prague Guide: Next to Palladium & Municipal House; great for Czech cauldron soups (zelňačka/česnečka) & grilled klobása!",
+    "hours": "Operator publishes generic 10 AM–9 PM; confirm venue-specific and Dec 24 hours",
+    "alert": "Optional Dec 24 morning alternative near Palladium; not an extra arrival-day requirement. Food offerings vary.",
+    "sourceUrl": "https://www.vanocnitrhy.cz/prodejni-rad/",
     "gmapSearch": "Namesti+Republiky+Prague",
     "dirFromHotel": "https://www.google.com/maps/dir/?api=1&origin=Almanac+X+Alcron+Prague&destination=Namesti+Republiky+Prague&travelmode=walking"
   },
@@ -803,8 +806,8 @@ const CHECKLIST_ITEMS = [
   {
     "id": "chk-17",
     "city": "Munich",
-    "title": "ChristkindlTram (Dec 20 Final Day) & Stachus Eiszauber",
-    "desc": "Spot Munich's festive tram at Sendlinger Tor (ends Sun Dec 20) & pass the Stachus open-air ice rink."
+    "title": "Optional ChristkindlTram or Stachus Eiszauber",
+    "desc": "Reserve the Dec 20 tram only if arrival permits, instead of another stop; otherwise enjoy the rink lights on your Old Town walk."
   },
   {
     "id": "chk-18",
@@ -815,8 +818,8 @@ const CHECKLIST_ITEMS = [
   {
     "id": "chk-19",
     "city": "Vienna",
-    "title": "Red Boot Mug & Rathaus Heart-Handle Mug",
-    "desc": "Spot the iconic red boot mugs (Stephansplatz/Belvedere) & heart-handle mugs (Rathausplatz)."
+    "title": "Choose a Vienna Souvenir Mug",
+    "desc": "Ask about current designs and deposits. MAGMAG advertises a glass red boot at selected huts; Belvedere uses its own K&K mug."
   },
   {
     "id": "chk-20",
@@ -1177,11 +1180,16 @@ function initPfandCalculator() {
   updateCalc();
 }
 
-// 5. Interactive Must-Eat & Souvenir Checklist (Saved to localStorage)
+// 5. Interactive Must-Eat & Souvenir Checklist (Backed by checklist.json + localStorage + GitHub API Sync)
+const GITHUB_REPO = "jasmah/christmas_market_2026";
+const GITHUB_BRANCH = "main";
+const CHECKLIST_FILE_PATH = "checklist.json";
+
 function initChecklist() {
   const container = document.getElementById("checklist-container");
   if (!container) return;
 
+  let itemsList = [...CHECKLIST_ITEMS];
   let saved = {};
   try {
     saved = JSON.parse(localStorage.getItem("xmas2026_checklist") || "{}");
@@ -1189,10 +1197,41 @@ function initChecklist() {
     saved = {};
   }
 
+  // Pre-fill GitHub token input if saved in browser localStorage
+  const tokenInput = document.getElementById("gh-token-input");
+  if (tokenInput) {
+    const existingToken = localStorage.getItem("xmas2026_gh_token") || "";
+    if (existingToken) tokenInput.value = existingToken;
+  }
+
+  const setStatus = (msg, isError = false) => {
+    const statusEl = document.getElementById("checklist-sync-status");
+    if (statusEl) {
+      statusEl.innerHTML = msg;
+      statusEl.style.color = isError ? "#991b1b" : "var(--forest-dark)";
+    }
+  };
+
+  // Check if URL has ?done=chk-1,chk-2 share parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const doneParam = urlParams.get("done");
+  if (doneParam !== null) {
+    const ids = doneParam.split(",").map((s) => s.trim()).filter(Boolean);
+    saved = {};
+    ids.forEach((id) => {
+      saved[id] = true;
+    });
+    try {
+      localStorage.setItem("xmas2026_checklist", JSON.stringify(saved));
+    } catch (e) {}
+    setStatus("🔗 Synced checklist from shared family URL link!");
+  }
+
   const render = () => {
-    container.innerHTML = CHECKLIST_ITEMS.map((item) => {
-      const isChecked = !!saved[item.id];
-      return `
+    container.innerHTML = itemsList
+      .map((item) => {
+        const isChecked = !!saved[item.id];
+        return `
         <label class="check-card ${isChecked ? "checked" : ""}" for="${item.id}">
           <input type="checkbox" id="${item.id}" ${isChecked ? "checked" : ""} onchange="toggleCheck('${item.id}')" />
           <div class="check-card-text">
@@ -1202,12 +1241,68 @@ function initChecklist() {
           </div>
         </label>
       `;
-    }).join("");
+      })
+      .join("");
 
-    const count = Object.values(saved).filter(Boolean).length;
+    const count = itemsList.filter((i) => !!saved[i.id]).length;
     const counterEl = document.getElementById("checklist-progress");
     if (counterEl) {
-      counterEl.textContent = `${count} / ${CHECKLIST_ITEMS.length} Completed`;
+      counterEl.textContent = `${count} / ${itemsList.length} Completed`;
+    }
+  };
+
+  const buildChecklistPayload = () => {
+    return {
+      updatedAt: new Date().toISOString(),
+      repo: GITHUB_REPO,
+      branch: GITHUB_BRANCH,
+      items: itemsList.map((item) => ({
+        id: item.id,
+        city: item.city,
+        title: item.title,
+        desc: item.desc,
+        checked: !!saved[item.id]
+      }))
+    };
+  };
+
+  // Fetch checklist.json from repository (supports both local/GitHub Pages & live GitHub API)
+  const loadFromRepoJson = async (forceOverwriteLocal = false) => {
+    try {
+      setStatus("⏳ Reading <code>checklist.json</code> from repository…");
+      const res = await fetch(`./${CHECKLIST_FILE_PATH}?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      if (data && Array.isArray(data.items)) {
+        itemsList = data.items.map((item) => ({
+          id: item.id,
+          city: item.city,
+          title: item.title,
+          desc: item.desc,
+          checked: !!item.checked
+        }));
+
+        const hasLocalChanges = localStorage.getItem("xmas2026_checklist_dirty") === "true";
+        if (forceOverwriteLocal || (!hasLocalChanges && doneParam === null)) {
+          saved = {};
+          itemsList.forEach((item) => {
+            if (item.checked) saved[item.id] = true;
+          });
+          localStorage.setItem("xmas2026_checklist", JSON.stringify(saved));
+          localStorage.setItem("xmas2026_checklist_dirty", "false");
+        }
+        const stamp = data.updatedAt ? new Date(data.updatedAt).toLocaleString() : "latest";
+        setStatus(
+          `✅ Loaded <code>checklist.json</code> (Repo updated: ${stamp})${
+            hasLocalChanges && !forceOverwriteLocal ? " • Unsaved local edits on this device" : ""
+          }`
+        );
+        render();
+      }
+    } catch (err) {
+      setStatus("📱 Using local browser checklist (<code>checklist.json</code> offline fallback).");
+      render();
     }
   };
 
@@ -1215,9 +1310,124 @@ function initChecklist() {
     saved[id] = !saved[id];
     try {
       localStorage.setItem("xmas2026_checklist", JSON.stringify(saved));
+      localStorage.setItem("xmas2026_checklist_dirty", "true");
     } catch (e) {}
+    setStatus("✏️ Saved on this device • Click <strong>☁️ Save to GitHub (checklist.json)</strong> to update repo for everyone.");
     render();
   };
 
+  window.reloadChecklistFromRepo = function () {
+    loadFromRepoJson(true);
+  };
+
+  window.downloadChecklistJson = function () {
+    const payload = buildChecklistPayload();
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "checklist.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setStatus("📥 Downloaded updated <code>checklist.json</code>! Commit this file to your repo to update the default state.");
+  };
+
+  window.copyChecklistShareLink = function () {
+    const checkedIds = itemsList.filter((i) => !!saved[i.id]).map((i) => i.id).join(",");
+    const shareUrl = `${window.location.origin}${window.location.pathname}?done=${encodeURIComponent(checkedIds)}#checklist-section`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        setStatus("🔗 Copied family sync link to clipboard! Paste it into your family chat.");
+      });
+    } else {
+      window.prompt("Copy this family checklist sync link:", shareUrl);
+    }
+  };
+
+  window.toggleGithubTokenBox = function () {
+    const box = document.getElementById("github-token-box");
+    if (box) {
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+  };
+
+  window.saveGithubToken = function () {
+    const input = document.getElementById("gh-token-input");
+    if (!input || !input.value.trim()) {
+      setStatus("⚠️ Please paste a valid GitHub Personal Access Token first.", true);
+      return;
+    }
+    localStorage.setItem("xmas2026_gh_token", input.value.trim());
+    setStatus("🔑 GitHub token saved privately in this browser! You can now click <strong>☁️ Save to GitHub (checklist.json)</strong>.");
+  };
+
+  window.clearGithubToken = function () {
+    localStorage.removeItem("xmas2026_gh_token");
+    const input = document.getElementById("gh-token-input");
+    if (input) input.value = "";
+    setStatus("🗑️ Cleared GitHub token from this browser.");
+  };
+
+  window.saveChecklistToGitHub = async function () {
+    const token = localStorage.getItem("xmas2026_gh_token");
+    if (!token) {
+      const box = document.getElementById("github-token-box");
+      if (box) box.style.display = "block";
+      setStatus("🔑 To save directly to <code>checklist.json</code> on GitHub, paste your GitHub token in the setup box below (or use <strong>📥 Download checklist.json</strong>).", true);
+      return;
+    }
+
+    try {
+      setStatus("☁️ Committing updated <code>checklist.json</code> to GitHub repo…");
+      const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${CHECKLIST_FILE_PATH}`;
+      const headers = {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${token}`
+      };
+
+      // 1. Get current file SHA from GitHub
+      let sha = undefined;
+      const getRes = await fetch(`${apiUrl}?ref=${GITHUB_BRANCH}`, { headers, cache: "no-store" });
+      if (getRes.ok) {
+        const fileMeta = await getRes.json();
+        sha = fileMeta.sha;
+      }
+
+      // 2. Encode UTF-8 JSON to Base64
+      const payloadJson = JSON.stringify(buildChecklistPayload(), null, 2);
+      const base64Content = btoa(unescape(encodeURIComponent(payloadJson)));
+
+      const count = itemsList.filter((i) => !!saved[i.id]).length;
+      const putBody = {
+        message: `Update checklist.json (${count}/${itemsList.length} completed)`,
+        content: base64Content,
+        branch: GITHUB_BRANCH
+      };
+      if (sha) putBody.sha = sha;
+
+      const putRes = await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          ...headers,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(putBody)
+      });
+
+      if (!putRes.ok) {
+        const errData = await putRes.json().catch(() => ({}));
+        throw new Error(errData.message || `GitHub API returned ${putRes.status}`);
+      }
+
+      localStorage.setItem("xmas2026_checklist_dirty", "false");
+      setStatus(`✅ Saved directly to <code>checklist.json</code> in <code>${GITHUB_REPO}</code> (${count}/${itemsList.length} checked)!`);
+    } catch (err) {
+      setStatus(`❌ GitHub save failed: ${err.message}. Check your token permissions (Contents: Read & write).`, true);
+    }
+  };
+
   render();
+  loadFromRepoJson(false);
 }

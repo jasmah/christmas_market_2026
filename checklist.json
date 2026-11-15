@@ -1,0 +1,147 @@
+{
+  "updatedAt": "2026-11-15T21:05:00.000Z",
+  "repo": "jasmah/christmas_market_2026",
+  "branch": "main",
+  "items": [
+    {
+      "id": "chk-1",
+      "city": "Munich",
+      "title": "Rahmfleck at Marienplatz",
+      "desc": "Bavarian wood-fired flatbread topped with sour cream, bacon & chives.",
+      "checked": false
+    },
+    {
+      "id": "chk-2",
+      "city": "Munich",
+      "title": "5:15 PM Rathaus Balcony Music",
+      "desc": "Arrive in Marienplatz by 5 PM on Sun Dec 20 or Tue Dec 22; check the programme.",
+      "checked": false
+    },
+    {
+      "id": "chk-3",
+      "city": "Munich",
+      "title": "Residenz Village Before Dec 22 Close",
+      "desc": "Visit Tuesday early afternoon; final Dec 22 close is 8 PM.",
+      "checked": false
+    },
+    {
+      "id": "chk-4",
+      "city": "Munich",
+      "title": "Drachenblut at Medieval Market",
+      "desc": "Hot spiced cherry-and-honey mead in a clay goblet at Wittelsbacherplatz.",
+      "checked": false
+    },
+    {
+      "id": "chk-5",
+      "city": "Nuremberg",
+      "title": "Drei im Weggla",
+      "desc": "Three marjoram-seasoned Nürnberger sausages in a crusty roll with mustard.",
+      "checked": false
+    },
+    {
+      "id": "chk-6",
+      "city": "Nuremberg",
+      "title": "Original Elisenlebkuchen",
+      "desc": "Nut-rich gingerbread; check flour, wafer and allergen ingredients before ordering.",
+      "checked": false
+    },
+    {
+      "id": "chk-7",
+      "city": "Nuremberg",
+      "title": "Heidelbeer-Glühwein",
+      "desc": "Nuremberg's signature blueberry mulled wine at Hauptmarkt.",
+      "checked": false
+    },
+    {
+      "id": "chk-8",
+      "city": "Nuremberg",
+      "title": "Spin the Schöner Brunnen Brass Ring",
+      "desc": "Spin the seamless brass ring 3 times for luck + watch 12:00 PM Männleinlaufen clock.",
+      "checked": false
+    },
+    {
+      "id": "chk-9",
+      "city": "Nuremberg",
+      "title": "Zwetschgenmännla Souvenir",
+      "desc": "Traditional handmade chimney-sweep or figure crafted from dried prunes & walnuts.",
+      "checked": false
+    },
+    {
+      "id": "chk-10",
+      "city": "Prague",
+      "title": "Charles Bridge at Dusk",
+      "desc": "Dec 23 lamplighter is an optional bonus: reconfirm timing and skip if arrival is delayed.",
+      "checked": false
+    },
+    {
+      "id": "chk-11",
+      "city": "Prague",
+      "title": "Svařák & Hot Medovina",
+      "desc": "Czech citrus-spiced mulled wine and hot honey mead on Old Town Square.",
+      "checked": false
+    },
+    {
+      "id": "chk-12",
+      "city": "Prague",
+      "title": "Bramboráky & Charcoal-Spit Trdelník",
+      "desc": "Crispy garlic-marjoram potato pancakes & piping-hot cinnamon walnut chimney cake.",
+      "checked": false
+    },
+    {
+      "id": "chk-13",
+      "city": "Prague",
+      "title": "Old Town Square Christmas Tree",
+      "desc": "Enjoy the decorations; add a light show only if the 2026 programme confirms it.",
+      "checked": false
+    },
+    {
+      "id": "chk-14",
+      "city": "Vienna",
+      "title": "Dec 26 Vienna Market Evening",
+      "desc": "Maria-Theresien-Platz before conservative 4 PM cutoff, then cathedral and Rathaus if time allows.",
+      "checked": false
+    },
+    {
+      "id": "chk-15",
+      "city": "Vienna",
+      "title": "Käsekrainer & Maroni",
+      "desc": "Cheese-stuffed smoked sausage & hot roasted chestnuts in a two-pocket paper cone.",
+      "checked": false
+    },
+    {
+      "id": "chk-16",
+      "city": "Vienna",
+      "title": "Kaiserschmarren at Belvedere / Schönbrunn",
+      "desc": "Fluffy shredded caramelized emperor's pancake with warm plum compote on Sun Dec 27.",
+      "checked": false
+    },
+    {
+      "id": "chk-17",
+      "city": "Munich",
+      "title": "ChristkindlTram (Dec 20 Final Day) & Stachus Eiszauber",
+      "desc": "Spot Munich's festive tram at Sendlinger Tor (ends Sun Dec 20) & pass the Stachus open-air ice rink.",
+      "checked": false
+    },
+    {
+      "id": "chk-18",
+      "city": "Prague",
+      "title": "Vánočka Bread & Czech Cauldron Soup",
+      "desc": "Try braided raisin-almond Vánočka & hot garlic (česnečka) or sauerkraut (zelňačka) soup.",
+      "checked": false
+    },
+    {
+      "id": "chk-19",
+      "city": "Vienna",
+      "title": "Red Boot Mug & Rathaus Heart-Handle Mug",
+      "desc": "Spot the iconic red boot mugs (Stephansplatz/Belvedere) & heart-handle mugs (Rathausplatz).",
+      "checked": false
+    },
+    {
+      "id": "chk-20",
+      "city": "Vienna",
+      "title": "Selchfleischknödel, Bosna, Schaumrollen & Vanillekipferl",
+      "desc": "Smoked-meat potato dumplings, spicy Bosna sausage roll, meringue pastry horns & vanilla crescents.",
+      "checked": false
+    }
+  ]
+}
