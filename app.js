@@ -544,10 +544,37 @@ function initMap() {
 
   map = L.map("leaflet-map").setView(CITY_CONFIG.all.center, CITY_CONFIG.all.zoom);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; CARTO',
+  const osmLayer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19
-  }).addTo(map);
+  });
+
+  const esriStreetLayer = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution: "Tiles &copy; Esri",
+      maxZoom: 19
+    }
+  );
+
+  const esriSatLayer = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {
+      attribution: "Tiles &copy; Esri",
+      maxZoom: 19
+    }
+  );
+
+  osmLayer.addTo(map);
+  L.control.layers(
+    {
+      "🗺️ Street Map (OpenStreetMap)": osmLayer,
+      "🏙️ Detailed Atlas (Esri)": esriStreetLayer,
+      "🛰️ Satellite View": esriSatLayer
+    },
+    null,
+    { position: "topright" }
+  ).addTo(map);
 
   markersLayer = L.layerGroup().addTo(map);
   routeLayer = L.layerGroup().addTo(map);
